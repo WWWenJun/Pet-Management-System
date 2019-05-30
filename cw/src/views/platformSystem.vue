@@ -1,18 +1,33 @@
 <template>
   <div>
-    <h1>平台系统</h1>
-    <div class="navLeft">
-      <dl>
-        <dt>平台管理</dt>
-        <dd>
-          <router-link to="/storeSystem/shopDoor">店门</router-link>
-        </dd>
-        <dd>
-          <router-link to="/storeSystem/commodity">商品</router-link>
-        </dd>
-      </dl>
-    </div>
-    <router-view class="content"></router-view>
+    <el-container>
+      <el-header>
+        <el-menu
+          class="el-menu-demo"
+          mode="horizontal"
+          background-color="#545c64"
+          text-color="#fff"
+          active-text-color="#ffd04b"
+          router
+         >
+          <el-menu-item index="1">供应商管理</el-menu-item>
+          <el-submenu index="2">
+            <template slot="title">宠主管理</template>
+            <el-menu-item index="2-1">选项1</el-menu-item>
+            <el-menu-item index="2-2">选项2</el-menu-item>
+            <el-menu-item index="2-3">选项3</el-menu-item>
+          </el-submenu>
+          <el-submenu index="3">
+            <template slot="title">用户管理</template>
+            <el-menu-item index="3-1">选项1</el-menu-item>
+            <el-menu-item index="3-2">选项2</el-menu-item>
+            <el-menu-item index="3-3">选项3</el-menu-item>
+          </el-submenu>
+          <el-menu-item index="3">门店管理</el-menu-item>
+        </el-menu>
+      </el-header>
+      <el-main></el-main>
+    </el-container>
   </div>
 </template>
 
@@ -21,11 +36,43 @@ export default {};
 </script>
 
 <style>
-.navLeft{
-    float: left;
+.el-header,
+.el-footer {
+  background-color: rgb(84, 92, 100);
+  color: #333;
+  text-align: center;
+  line-height: 60px;
 }
-.content{
-    float: left;
-    margin-left: 50px;
+
+.el-aside {
+  background-color: #d3dce6;
+  color: #333;
+  text-align: center;
+  line-height: 200px;
+}
+
+.el-main {
+  background-color: #e9eef3;
+  color: #333;
+  text-align: center;
+  line-height: 160px;
+}
+
+body > .el-container {
+  margin-bottom: 40px;
+}
+
+.el-container:nth-child(5) .el-aside,
+.el-container:nth-child(6) .el-aside {
+  line-height: 260px;
+}
+
+.el-container:nth-child(7) .el-aside {
+  line-height: 320px;
+}
+.el-menu-demo{
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
 }
 </style>

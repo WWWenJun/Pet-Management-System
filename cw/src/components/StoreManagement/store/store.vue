@@ -1,5 +1,5 @@
 <template>
-    <h1>商品</h1>
+    <h1>店门</h1>
 </template>
 
 <script>

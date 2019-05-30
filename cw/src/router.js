@@ -12,15 +12,10 @@ export default new Router({
       component: () => import('./views/storeSystem.vue'),
       children:[
         {
-          path:'shopDoor',
-          name:'ShopDoor',
-          component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
-        },
-        {
-          path:'commodity',
-          name:'Commodity',
-          component:()=>import("./components/StoreManagement/commodity/commodity.vue")
-        },
+          path:'store',
+          name:'Store',
+          component:()=>import("./components/StoreManagement/store/store.vue")
+        }
       ]
     },
     // 平台路径

@@ -5,7 +5,7 @@
       <el-container>
         <el-aside width="200px">
           <el-row>
-            <el-col :span="12" style="width: 100%">
+            <el-col :span="12" style="width: 100%; height:500px;">
               <el-menu
                 default-active="2"
                 class="el-menu-vertical-demo"
@@ -14,14 +14,10 @@
                 active-text-color="#ffd04b"
                 :router="true"
               >
-                <el-submenu index="1">
-                  <template slot="title">
-                    <i class="el-icon-school"></i>
-                    <span>门店申请</span>
-                  </template>
-                  <el-menu-item index="/storeSystem/shopDoor">店门</el-menu-item>
-                  <el-menu-item index="/storeSystem/commodity">商品</el-menu-item>
-                </el-submenu>
+                <el-menu-item index="/storeSystem/store">
+                  <i class="el-icon-school"></i>
+                  <span slot="title">门店申请</span>
+                </el-menu-item>
                 <el-submenu index="2">
                   <template slot="title">
                     <i class="el-icon-service"></i>
