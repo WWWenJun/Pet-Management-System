@@ -5,11 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session=require("express-session")
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-const studentsRouter = require("./routes/students");
-const classesRouter = require("./routes/classes");
-const shopRouter = require("./routes/shop");
+// var indexRouter = require('./routes/index');
+// var usersRouter = require('./routes/users');
+const goodsRouter = require("./routes/goods.js");
+const goodsMethodRouter = require("./routes/goodsMethod.js");
+const goodsOneRouter = require("./routes/goodsOne.js");
+const goodsSuitRouter = require("./routes/goodsSuit.js");
+const goodsTypeRouter = require("./routes/goodsType.js");
+
 
 require("./dao/database");
 
@@ -38,10 +41,11 @@ app.use(session({
 }))
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/students', studentsRouter);
-app.use('/classes', classesRouter);
-app.use('/shop', shopRouter);
+app.use('/goods', goodsRouter);
+app.use('/goodsMethod', goodsMethodRouter);
+app.use('/goodsOne', goodsOneRouter);
+app.use('/goodsSuit', goodsSuitRouter);
+app.use('/goodsType', goodsTypeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -14,3 +14,8 @@ require("./models/schedulesModel");
 require("./models/ordersModel");
 require("./models/moviesModel");
 require("./models/cinemasModel");
+require("./models/goodsMethodModel.js");
+require("./models/goodsModel.js");
+require("./models/goodsOneModel.js");
+require("./models/goodsSuitModel.js");
+require("./models/goodsTypeModel.js");
