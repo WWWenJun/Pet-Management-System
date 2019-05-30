@@ -19,3 +19,4 @@ require("./models/goodsModel.js");
 require("./models/goodsOneModel.js");
 require("./models/goodsSuitModel.js");
 require("./models/goodsTypeModel.js");
+require("./models/goodsTypeModels.js");
