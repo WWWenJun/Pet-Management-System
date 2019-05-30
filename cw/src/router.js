@@ -21,6 +21,35 @@ export default new Router({
           name:'Commodity',
           component:()=>import("./components/StoreManagement/commodity/commodity.vue")
         },
+        {
+          path:'goods',
+          name:'goods',
+          component:()=>import("./components/StoreManagement/goodsManage/goods.vue")
+        },
+        {
+          path:'goodsMethod',
+          name:'goodsMethod',
+          component:()=>import("./components/StoreManagement/goodsManage/goodsMethod.vue")
+        },
+        {
+          path:'goodsOne',
+          name:'goodsOne',
+          component:()=>import("./components/StoreManagement/goodsManage/goodsOne.vue")
+        },
+        {
+          path:'goodsSuit',
+          name:'goodsSuit',
+          component:()=>import("./components/StoreManagement/goodsManage/goodsSuit.vue")
+        },
+        {
+          path:'goodType',
+          name:'goodType',
+          component:()=>import("./components/StoreManagement/goodsManage/goodType.vue")
+        },{
+          path:'store',
+          name:'Store',
+          component:()=>import("./components/StoreManagement/store/store.vue")
+        }
       ]
     },
     // 平台路径

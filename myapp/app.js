@@ -40,7 +40,7 @@ app.use(session({
   resave:false
 }))
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/goods', goodsRouter);
 app.use('/goodsMethod', goodsMethodRouter);
 app.use('/goodsOne', goodsOneRouter);

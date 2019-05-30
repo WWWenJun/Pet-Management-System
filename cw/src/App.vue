@@ -4,11 +4,10 @@
   </div>
 </template>
 <script>
-import Commodity from "./components/StoreManagement/commodity/commodity";
-import ShopDoor from "./components/StoreManagement/shopDoor/shopDoor";
+import Store from "./components/StoreManagement/store/store";
 export default {
   components: {
-Commodity,ShopDoor
+Store
   }
 };
 </script>
