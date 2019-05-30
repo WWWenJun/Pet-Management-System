@@ -45,7 +45,11 @@ export default new Router({
           path:'goodType',
           name:'goodType',
           component:()=>import("./components/StoreManagement/goodsManage/goodType.vue")
-        },
+        },{
+          path:'store',
+          name:'Store',
+          component:()=>import("./components/StoreManagement/store/store.vue")
+        }
       ]
     },
     // 平台路径
