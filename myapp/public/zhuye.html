@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../jquery-easyui-1.7.0/themes/icon.css">
+    <link rel="stylesheet" href="../jquery-easyui-1.7.0/themes/default/easyui.css">
+    <script src="../jQurey各版本/jquery-1.12.4.js"></script>
+    <script src="../jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <style>
+        * {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body class="easyui-layout" fit='true'>
+
+    <div data-options="region:'north'" style="height:100px;background-color:skyblue;color:white">
+        <h1>管理系统</h1>
+    </div>
+    <div data-options="region:'west',title:'功能面板',split:true,minWidth:200" style="height:100px;width:200px;font-size:10px;color:white;background-color:gray">
+        <ul>
+            <li data-val="students">
+                <h1>学生管理</h1>
+            </li>
+            <li data-val="teacher">
+                <h1>老师管理</h1>
+            </li>
+            <li data-val="class">
+                <h1>课程管理</h1>
+            </li>
+        </ul>
+    </div>
+    <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true,minWidth:200," style="width:200px;">
+        <div id="rl" class="easyui-calendar" style="width:200px;height:200px;"></div>
+    </div>
+    <div data-options="region:'south'" style="height:80px">1.01版本
+
+        <marquee behavior="" direction="" style="font-size:26px;margin-top:10px;color:red">欢迎来到学生管理系统</marquee>
+    </div>
+    <div data-options="region:'center',title:''" style="padding:5px;background:#eee;">
+        <div id="show" class="easyui-tabs" fit='true'>
+        </div>
+    </div>
+</body>
+<script>
+    $('ul').on('click', 'li', function () {
+        if(!$('#show').tabs("exists",$(this).text())){
+        $("#show").tabs('add', {
+            title: $(this).text(),
+            href: `./${$(this).attr('data-val')}.html`,
+            cache: 'true',
+            closable: 'true',
+        });
+        }
+        else{
+            $('#show').tabs('select',$(this).text())
+        }
+    })
+</script>
+
+</html>
