@@ -36,8 +36,11 @@
                     <i class="el-icon-shopping-cart-2"></i>
                     <span>商品管理</span>
                   </template>
-                  <el-menu-item index="3-1">选项1</el-menu-item>
-                  <el-menu-item index="3-2">选项2</el-menu-item>
+                  <el-menu-item index="">商品</el-menu-item></el-menu-item>
+                  <el-menu-item index="/storeSystem/goodsMethod">品类</el-menu-item>
+                  <el-menu-item index="3-3">材质或者制作方法</el-menu-item>
+                  <el-menu-item index="3-4">适用规格</el-menu-item>
+                  <el-menu-item index="3-5">专属规格</el-menu-item>         
                 </el-submenu>
                 <el-submenu index="4">
                   <template slot="title">
@@ -79,5 +82,10 @@ export default {};
   background-color: #e9eef3;
   color: #333;
   text-align: center;
+<<<<<<< HEAD
+=======
+  line-height: 160px;
+  padding: 0;
+>>>>>>> 809795d61e2780600058e4b1e7d8c8350952bbd1
 }
 </style>
