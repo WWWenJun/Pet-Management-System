@@ -21,9 +21,7 @@ export default new Router({
           path:'addStore',
           name:'AddStore',
           component:()=>import("./components/StoreManagement/store/addStore.vue")
-        },{
         },
-
         {
           path:'addServies',
           name:'addservies',

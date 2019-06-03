@@ -154,7 +154,7 @@
   </div>
 </el-dialog>
   <el-table
-    :data=""
+    :data="goodsData"
     style="width: 100%">
     <el-table-column type="expand">
       <template slot-scope="props">
@@ -349,7 +349,7 @@ const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
     }
   }
 </script>
-<style scope>
+<style>
 .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;
