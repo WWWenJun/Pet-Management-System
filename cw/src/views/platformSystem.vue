@@ -10,17 +10,7 @@
           text-color="#fff"
           active-text-color="#ffd04b"
           router
-<<<<<<< HEAD
         >
-        
-         
-=======
-
-        >
-          <el-menu-item index="1">供应商管理</el-menu-item>
-
-        
->>>>>>> a6b30efcc6111f12867d352506b814d315ba1280
           <el-submenu index="1">
             <template slot="title">供应商管理</template>
             <el-menu-item index="/platformSystem/SupplierList">供应商列表</el-menu-item>

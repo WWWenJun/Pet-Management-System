@@ -36,11 +36,8 @@
                     <i class="el-icon-shopping-cart-2"></i>
                     <span>商品管理</span>
                   </template>
-<<<<<<< HEAD
                   <el-menu-item index="">商品</el-menu-item>
-=======
                   <el-menu-item index="/storeSystem/goods">商品</el-menu-item>
->>>>>>> a6b30efcc6111f12867d352506b814d315ba1280
                   <el-menu-item index="/storeSystem/goodsMethod">品类</el-menu-item>
                   <el-menu-item index="/storeSystem/goodsType">材质或者制作方法</el-menu-item>
                   <el-menu-item index="/storeSystem/goodsOne">适用规格</el-menu-item>
