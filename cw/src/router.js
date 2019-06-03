@@ -12,16 +12,6 @@ export default new Router({
       component: () => import('./views/storeSystem.vue'),
       children:[
         {
-          path:'shopDoor',
-          name:'ShopDoor',
-          component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
-        },
-        {
-          path:'commodity',
-          name:'Commodity',
-          component:()=>import("./components/StoreManagement/commodity/commodity.vue")
-        },
-        {
           path:'goods',
           name:'goods',
           component:()=>import("./components/StoreManagement/goodsManage/goods.vue")
@@ -42,9 +32,9 @@ export default new Router({
           component:()=>import("./components/StoreManagement/goodsManage/goodsSuit.vue")
         },
         {
-          path:'goodType',
-          name:'goodType',
-          component:()=>import("./components/StoreManagement/goodsManage/goodType.vue")
+          path:'goodsType',
+          name:'goodsType',
+          component:()=>import("./components/StoreManagement/goodsManage/goodsType.vue")
         },{
           path:'store',
           name:'Store',
@@ -69,6 +59,10 @@ export default new Router({
       //     component:()=>import("./components/StoreManagement/commodity/commodity.vue")
       //   },
       // ]
+    },{
+      path: '/test',
+      name: 'test',
+      component:()=>import('./views/test.vue')
     }
   ]
 })
