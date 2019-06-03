@@ -69,13 +69,7 @@ export default new Router({
           path: 'goodsType',
           name: 'goodsType',
           component: () => import("./components/StoreManagement/goodsManage/goodsType.vue")
-        }
-        // {
-        //   path:'store',
-        //   name:'Store',
-        //   component:()=>import("./components/StoreManagement/store/store.vue")
-        // }
-
+        },
       ]
     },
     // 平台路径
@@ -117,6 +111,11 @@ export default new Router({
           path: 'addPetMaster',
           name: 'AddPetMaster',
           component: () => import("./components/PlatformManagement/petMaster/addPetMaster.vue")
+        },
+        {
+          path: 'store',
+          name: 'Store',
+          component: () => import("./components/PlatformManagement/store/store.vue")
         }
       ]
     },

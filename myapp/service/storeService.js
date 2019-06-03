@@ -1,5 +1,5 @@
 
-const { addStore,getStore,deleteStore,updateStore } = require("../dao/storeDao.js");
+const { addStore,getStore,deleteStore,updateStore,getStoreByPage } = require("../dao/storeDao.js");
 
 module.exports.addStore = async store => {
     await addStore(store);
@@ -14,3 +14,6 @@ module.exports.deleteStore = async storeId => {
 module.exports.updateStore = async store => {
     const result = await updateStore(store);
 }
+module.exports.getStoreByPage=async page=>{
+    return await getStoreByPage(page);
+ }
