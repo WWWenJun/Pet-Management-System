@@ -16,7 +16,14 @@ const storeSchema = new mongoose.Schema({
         default:'0'
     },
     scale:String,//佣金比例
-    state:String//门店状态
+    state:{//门店状态
+        type:String,
+        default:'申请中'
+    },
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user"
+    }
 })
 // 创建学生数据模型
 mongoose.model("storeModel", storeSchema, "store");

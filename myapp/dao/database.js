@@ -5,8 +5,13 @@ mongoose.connection.on('connected', function() {
 console.log('Mongoose connected to ' + dbURI);
 });
 
+require("./models/clerkModel");
+require("./models/serveModel");
+require("./models/managerModel");
 require("./models/goodsMethodModel.js");
 require("./models/goodsModel.js");
 require("./models/goodsOneModel.js");
 require("./models/goodsSuitModel.js");
 require("./models/goodsTypeModel.js");
+
+require("./models/storeModel");

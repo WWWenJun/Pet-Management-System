@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const { addManagers, getManagersByPage,removeManagers,getManagers ,changeManagers} = require("../service/managersService");
+const { addManagers, getManagersByPage,removeManagers,getManagers ,getSlurManagers,changeManagers} = require("../service/managersService");
 
 /* GET home page. */
 router.post('/addManagers', async function (req, res, next) {
@@ -12,6 +12,9 @@ router.post('/changeManagers', async function (req, res, next) {
 });
 router.get('/getManagers', async function (req, res, next) {
     res.send(await getManagers());
+});
+router.get('/getSlurManagers', async function (req, res, next) {
+    res.send(await getSlurManagers(req.query));
 });
 router.get('/getManagersByPage', async function (req, res, next) {
     res.send(await getManagersByPage(req.query));
