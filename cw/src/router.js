@@ -12,6 +12,10 @@ export default new Router({
       component: () => import('./views/storeSystem.vue'),
       children:[
         {
+<<<<<<< HEAD
+=======
+
+>>>>>>> a6b30efcc6111f12867d352506b814d315ba1280
           path:'storeList',
           name:'StoreList',
           component:()=>import("./components/StoreManagement/store/storeList.vue")
@@ -20,7 +24,33 @@ export default new Router({
           path:'addStore',
           name:'AddStore',
           component:()=>import("./components/StoreManagement/store/addStore.vue")
+<<<<<<< HEAD
         },{
+=======
+        },
+
+        {
+          path:'addServies',
+          name:'addservies',
+          component:()=>import("./components/StoreManagement/service/addService.vue")
+        },
+        {
+          path:'serviesList',
+          name:'serviesList',
+          component:()=>import("./components/StoreManagement/service/serviesList.vue")
+        },
+        {
+          path:'addClerks',
+          name:'addClerks',
+          component:()=>import("./components/StoreManagement/clerk/addClerk.vue")
+        },
+        {
+          path:'clerksList',
+          name:'clerksList',
+          component:()=>import("./components/StoreManagement/clerk/clerkList.vue")
+        },
+{
+>>>>>>> a6b30efcc6111f12867d352506b814d315ba1280
           path:'goods',
           name:'goods',
           component:()=>import("./components/StoreManagement/goodsManage/goods.vue")
@@ -41,10 +71,23 @@ export default new Router({
           component:()=>import("./components/StoreManagement/goodsManage/goodsSuit.vue")
         },
         {
+<<<<<<< HEAD
           path:'goodType',
           name:'goodType',
           component:()=>import("./components/StoreManagement/goodsManage/goodType.vue")
         }
+=======
+          path:'goodsType',
+          name:'goodsType',
+          component:()=>import("./components/StoreManagement/goodsManage/goodsType.vue")
+        }
+        // {
+        //   path:'store',
+        //   name:'Store',
+        //   component:()=>import("./components/StoreManagement/store/store.vue")
+        // }
+
+>>>>>>> a6b30efcc6111f12867d352506b814d315ba1280
       ]
     },
     // 平台路径
@@ -54,16 +97,46 @@ export default new Router({
       component: () => import('./views/platformSystem.vue'),
       children:[
         {
+<<<<<<< HEAD
           path:'store',
           name:'Store',
           component:()=>import("./components/PlatformManagement/store/store.vue")
+=======
+
+          path:'managersList',
+          name:'managersList',
+          component:()=>import("./components/PlatformManagement/managers/platManegersList.vue")
         },
+        {
+          path:'storeManagersList',
+          name:'storeManagersList',
+          component:()=>import("./components/PlatformManagement/managers/storeManagerList.vue")
+        },
+        {
+          path:'addManagers',
+          name:'addManagers',
+          component:()=>import("./components/PlatformManagement/managers/addPlatManagers.vue")
+>>>>>>> a6b30efcc6111f12867d352506b814d315ba1280
+        },
+        // {
+        //   path:'commodity',
+        //   name:'Commodity',
+        //   component:()=>import("./components/StoreManagement/commodity/commodity.vue")
+        // },
+
       //   {
       //     path:'commodity',
       //     name:'Commodity',
       //     component:()=>import("./components/StoreManagement/commodity/commodity.vue")
+<<<<<<< HEAD
     //   },
   {
+=======
+      //   },
+      // ]
+    
+{
+>>>>>>> a6b30efcc6111f12867d352506b814d315ba1280
           path:'supplierList',
           name:'SupplierList',
           component:()=>import("./components/PlatformManagement/supplier/supplierList.vue")
@@ -82,8 +155,13 @@ export default new Router({
           path:'addPetMaster',
           name:'AddPetMaster',
           component:()=>import("./components/PlatformManagement/petMaster/addPetMaster.vue")
+<<<<<<< HEAD
         },
       ]
     }
   ]
+=======
+        }
+  ]}]
+>>>>>>> a6b30efcc6111f12867d352506b814d315ba1280
 })

@@ -1,4 +1,4 @@
-const { addClerks, getClerks,removeClerks,getClerksByPage,changeClerks } = require("../dao/clerksDao");
+const { addClerks, getClerks,removeClerks,getSlurClerks,getClerksByPage,changeClerks } = require("../dao/clerksDao");
 
 module.exports.addClerks = async Clerkses => {
     await addClerks(Clerkses);
@@ -10,6 +10,9 @@ module.exports.changeClerks = async Clerkses => {
 
 module.exports.getClerks = async () => {
     return await getClerks();
+}
+module.exports.getSlurClerks = async (data) => {
+    return await getSlurClerks(data);
 }
 module.exports.getClerksByPage = async page => {
     return await getClerksByPage(page)

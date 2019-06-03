@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <el-container>
       <el-header>
         <el-menu
@@ -9,9 +10,17 @@
           text-color="#fff"
           active-text-color="#ffd04b"
           router
+<<<<<<< HEAD
         >
         
          
+=======
+
+        >
+          <el-menu-item index="1">供应商管理</el-menu-item>
+
+        
+>>>>>>> a6b30efcc6111f12867d352506b814d315ba1280
           <el-submenu index="1">
             <template slot="title">供应商管理</template>
             <el-menu-item index="/platformSystem/SupplierList">供应商列表</el-menu-item>
@@ -23,11 +32,13 @@
             <el-menu-item index="/platformSystem/AddPetMaster">新增宠主</el-menu-item>
           </el-submenu>
           <el-submenu index="3">
-            <template slot="title">用户管理</template>
-            <el-menu-item index="3-1">选项1</el-menu-item>
-            <el-menu-item index="3-2">选项2</el-menu-item>
-            <el-menu-item index="3-3">选项3</el-menu-item>
-          </el-submenu>
+                  <template slot="title">
+                    <i class="el-icon-shopping-cart-2"></i>
+                    <span>用户管理</span>
+                  </template>
+                  <el-menu-item index="/platformSystem/managersList">平台管理员列表</el-menu-item>
+                  <el-menu-item index="/platformSystem/addManagers">增加平台管理员</el-menu-item>
+                </el-submenu>
           <el-menu-item index="/platformSystem/store">门店管理</el-menu-item>
         </el-menu>
       </el-header>
