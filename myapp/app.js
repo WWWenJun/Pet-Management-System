@@ -12,6 +12,7 @@ const goodsMethodRouter = require("./routes/goodsMethod.js");
 const goodsOneRouter = require("./routes/goodsOne.js");
 const goodsSuitRouter = require("./routes/goodsSuit.js");
 const goodsTypeRouter = require("./routes/goodsType.js");
+const storesUsersRouter=require("./routes/storeusers.js")
 
 
 require("./dao/database");
@@ -46,6 +47,7 @@ app.use('/goodsMethod', goodsMethodRouter);
 app.use('/goodsOne', goodsOneRouter);
 app.use('/goodsSuit', goodsSuitRouter);
 app.use('/goodsType', goodsTypeRouter);
+app.use("/storeusers",storesUsersRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

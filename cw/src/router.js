@@ -5,22 +5,32 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+     path:'/login',
+     name:'login',
+     component:()=>import("./views/login.vue"),
+    },
+    {
+      path:'/reg',
+      name:'reg',
+      component:()=>import("./views/reg.vue"),
+     },
     // 门店路径
     {
       path: '/storeSystem',
       name: 'StoreSystem',
       component: () => import('./views/storeSystem.vue'),
       children:[
-        {
-          path:'shopDoor',
-          name:'ShopDoor',
-          component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
-        },
-        {
-          path:'commodity',
-          name:'Commodity',
-          component:()=>import("./components/StoreManagement/commodity/commodity.vue")
-        },
+        // {
+        //   path:'shopDoor',
+        //   name:'ShopDoor',
+        //   component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
+        // },
+        // {
+        //   path:'commodity',
+        //   name:'Commodity',
+        //   component:()=>import("./components/StoreManagement/commodity/commodity.vue")
+        // },
         {
           path:'goods',
           name:'goods',
