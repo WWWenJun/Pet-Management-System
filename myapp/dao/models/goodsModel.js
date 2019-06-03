@@ -22,6 +22,7 @@ const goodsSchema = new mongoose.Schema({
     pack: String,//包装规格1kg/5kg..
     flavor:String,//口味
     special:String,//特殊功用
+    flavor:String,//口味
     place:String,//产地    
     data:String,//日期    
     quality:String,//保质期    
