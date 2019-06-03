@@ -17,3 +17,5 @@ router.post('/addStore', async function (req, res, next) {
 router.post('/searchStore',async function (req, res, next) {
     res.send(await searchStore(req.body));
   });
+
+  module.exports = router;

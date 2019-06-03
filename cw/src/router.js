@@ -12,16 +12,6 @@ export default new Router({
       component: () => import('./views/storeSystem.vue'),
       children:[
         {
-          path:'shopDoor',
-          name:'ShopDoor',
-          component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
-        },
-        {
-          path:'commodity',
-          name:'Commodity',
-          component:()=>import("./components/StoreManagement/commodity/commodity.vue")
-        },
-        {
           path:'goods',
           name:'goods',
           component:()=>import("./components/StoreManagement/goodsManage/goods.vue")
@@ -57,18 +47,28 @@ export default new Router({
       path: '/platformSystem',
       name: 'PlatformSystem',
       component: () => import('./views/platformSystem.vue'),
-      // children:[
-      //   {
-      //     path:'shopDoor',
-      //     name:'ShopDoor',
-      //     component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
-      //   },
-      //   {
-      //     path:'commodity',
-      //     name:'Commodity',
-      //     component:()=>import("./components/StoreManagement/commodity/commodity.vue")
-      //   },
-      // ]
+      children:[
+        {
+          path:'supplierList',
+          name:'SupplierList',
+          component:()=>import("./components/PlatformManagement/supplier/supplierList.vue")
+        },
+        {
+          path:'addSupplier',
+          name:'AddSupplier',
+          component:()=>import("./components/PlatformManagement/supplier/addSupplier.vue")
+        },
+        {
+          path:'petMasterList',
+          name:'PetMasterList',
+          component:()=>import("./components/PlatformManagement/petMaster/petMasterList.vue")
+        },
+        {
+          path:'addPetMaster',
+          name:'AddPetMaster',
+          component:()=>import("./components/PlatformManagement/petMaster/addPetMaster.vue")
+        },
+      ]
     }
   ]
 })

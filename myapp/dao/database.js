@@ -11,3 +11,6 @@ require("./models/goodsModel.js");
 require("./models/goodsOneModel.js");
 require("./models/goodsSuitModel.js");
 require("./models/goodsTypeModel.js");
+require("./models/supplierModel.js");
+require("./models/petMasterModel.js");
+require("./models/storeModel.js");
