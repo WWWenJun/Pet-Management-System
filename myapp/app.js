@@ -12,6 +12,9 @@ const goodsMethodRouter = require("./routes/goodsMethod.js");
 const goodsOneRouter = require("./routes/goodsOne.js");
 const goodsSuitRouter = require("./routes/goodsSuit.js");
 const goodsTypeRouter = require("./routes/goodsType.js");
+const serviesRouter = require("./routes/servies.js");
+const managersRouter = require("./routes/managers.js");
+const clerksRouter = require("./routes/clerks.js");
 const storeRouter=require("./routes/store")
 
 
@@ -41,12 +44,16 @@ app.use(session({
   resave:false
 }))
 
+// app.use('/',indexRouter);
 // app.use('/', indexRouter);
 app.use('/goods', goodsRouter);
 app.use('/goodsMethod', goodsMethodRouter);
 app.use('/goodsOne', goodsOneRouter);
 app.use('/goodsSuit', goodsSuitRouter);
 app.use('/goodsType', goodsTypeRouter);
+app.use('/servies', serviesRouter);
+app.use('/managers', managersRouter);
+app.use('/clerks', clerksRouter);
 app.use('/store', storeRouter);
 
 // catch 404 and forward to error handler

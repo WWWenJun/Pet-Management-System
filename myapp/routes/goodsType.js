@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const { addGoodsType,getGoodsType } = require("../service/classesService");
+const { addGoodsType,getGoodsType } = require("../service/goodsTypeService.js");
 router.post('/addGoodsType', async function (req, res, next) {
     res.send(await addGoodsType(req.body));
 });
