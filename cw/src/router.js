@@ -22,7 +22,6 @@ export default new Router({
           name:'AddStore',
           component:()=>import("./components/StoreManagement/store/addStore.vue")
         },
-
         {
           path:'addServies',
           name:'addservies',
@@ -68,12 +67,6 @@ export default new Router({
           name:'goodsType',
           component:()=>import("./components/StoreManagement/goodsManage/goodsType.vue")
         }
-        // {
-        //   path:'store',
-        //   name:'Store',
-        //   component:()=>import("./components/StoreManagement/store/store.vue")
-        // }
-
       ]
     },
     // 平台路径
@@ -83,7 +76,11 @@ export default new Router({
       component: () => import('./views/platformSystem.vue'),
       children:[
         {
-
+          path:'store',
+          name:'Store',
+          component:()=>import("./components/PlatformManagement/store/store.vue")
+        },
+        {
           path:'managersList',
           name:'managersList',
           component:()=>import("./components/PlatformManagement/managers/platManegersList.vue")
