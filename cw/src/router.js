@@ -43,7 +43,7 @@ export default new Router({
           name:'clerksList',
           component:()=>import("./components/StoreManagement/clerk/clerkList.vue")
         },
-{
+        {
           path:'goods',
           name:'goods',
           component:()=>import("./components/StoreManagement/goodsManage/goods.vue")

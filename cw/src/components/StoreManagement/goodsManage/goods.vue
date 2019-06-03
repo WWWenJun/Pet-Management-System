@@ -149,12 +149,12 @@
     </el-form-item>
   </el-form>
   <div slot="footer" class="dialog-footer">
-    <el-button @click="changeGoods = false">取 消</el-button>
+    <el-button @click="changegood = false">取 消</el-button>
     <el-button type="primary" @click="changeGood">确 定</el-button>
   </div>
 </el-dialog>
   <el-table
-    :data=""
+    :data="goodsData"
     style="width: 100%">
     <el-table-column type="expand">
       <template slot-scope="props">
@@ -207,7 +207,6 @@
                     <el-form-item label="所属门店">
             <span>{{ props.row.storeId }}</span>
           </el-form-item>
-
         </el-form>
       </template>
     </el-table-column>
@@ -271,7 +270,7 @@ const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
         }
     },
       methods:{
-              ...mapActions(['getGoodsOne','getGoodsMethod','getGoodsType','getGoodsSuit','addGood',"getGoods",'deleteGoods']),
+              ...mapActions(['getGoodsOne','getGoodsMethod','getGoodsType','getGoodsSuit','addGood','changeOneGood',"getGoods",'deleteGoods']),
   handleAvatarSuccess(res, file) {
         this.imageUrl = URL.createObjectURL(file.raw);
         console.log(URL.createObjectURL(file.raw));
@@ -287,8 +286,7 @@ const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
       change(data){
         this.changegood=true
         this.changeGoods=data
-        console.log(data);
-        
+        this.changeOneGood(data)
       },
       addGoods(){
         this.dialogFormVisible=false,
@@ -343,7 +341,24 @@ const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
             storeId:''
       },
         dialogFormVisible:false,
-        changeGoods:{},
+        changeGoods:{
+          name:'',
+            typeId:'',
+            methodId:'',
+            suitId:'',
+            oneId:'',
+            pack:'',
+            flavor:'',
+            special:'',
+            place:'',
+            data:'',
+            quality:'',
+            supplierId:'',
+            item:'',
+            price:'',
+            img:'',
+            storeId:''
+        },
         changegood:false
       }
     }
