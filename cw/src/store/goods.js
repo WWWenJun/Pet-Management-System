@@ -59,6 +59,15 @@ export default{
         }
     },
     actions:{
+        changeOneGood(context,payload){
+            axios({
+                method:"post",
+                url:"/goods/changeOneGood",
+                data:payload
+            }).then((msg)=>{
+                console.log(msg)
+            })
+        },
         addGoodsType(context,payload){
             axios({
                 method:"post",

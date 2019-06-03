@@ -58,8 +58,6 @@
                   </template>
                   <el-menu-item index="/storeSystem/clerksList">店员列表</el-menu-item>
                   <el-menu-item index="/storeSystem/addClerks">增加店员</el-menu-item>
-                  
-    
                 </el-submenu>
               </el-menu>
             </el-col>

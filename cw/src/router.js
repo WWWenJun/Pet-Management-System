@@ -4,51 +4,36 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
+  routes: [{
+      path: '/login',
+      name: 'login',
+      component: () => import("./views/login.vue"),
+    },
+    {
+      path: '/reg',
+      name: 'reg',
+      component: () => import("./views/reg.vue"),
+    },
     // 门店路径
     {
       path: '/storeSystem',
       name: 'StoreSystem',
       component: () => import('./views/storeSystem.vue'),
-      children: [{
-          path: 'storeList',
-          name: 'StoreList',
-          component: () => import("./components/StoreManagement/store/storeList.vue")
-        },
-        {
-          path: 'addStore',
-          name: 'AddStore',
-          component: () => import("./components/StoreManagement/store/addStore.vue")
-        },
-        {
-          path: 'addServies',
-          name: 'addservies',
-          component: () => import("./components/StoreManagement/service/addService.vue")
-        },
-        {
-          path: 'serviesList',
-          name: 'serviesList',
-          component: () => import("./components/StoreManagement/service/serviesList.vue")
-        },
-        {
-          path: 'addClerks',
-          name: 'addClerks',
-          component: () => import("./components/StoreManagement/clerk/addClerk.vue")
-        },
-        {
-          path: 'clerksList',
-          name: 'clerksList',
-          component: () => import("./components/StoreManagement/clerk/clerkList.vue")
-        },
+      children: [
+        // {
+        //   path:'shopDoor',
+        //   name:'ShopDoor',
+        //   component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
+        // },
+        // {
+        //   path:'commodity',
+        //   name:'Commodity',
+        //   component:()=>import("./components/StoreManagement/commodity/commodity.vue")
+        // },
         {
           path: 'goods',
           name: 'goods',
           component: () => import("./components/StoreManagement/goodsManage/goods.vue")
-        },
-        {
-          path: 'goodsMethod',
-          name: 'goodsMethod',
-          component: () => import("./components/StoreManagement/goodsManage/goodsMethod.vue")
         },
         {
           path: 'goodsOne',
@@ -69,7 +54,7 @@ export default new Router({
           path: 'goodsType',
           name: 'goodsType',
           component: () => import("./components/StoreManagement/goodsManage/goodsType.vue")
-        },
+        }
       ]
     },
     // 平台路径
@@ -86,6 +71,15 @@ export default new Router({
           path: 'storeManagersList',
           name: 'storeManagersList',
           component: () => import("./components/PlatformManagement/managers/storeManagerList.vue")
+        }, {
+          path: 'store',
+          name: 'Store',
+          component: () => import("./components/PlatformManagement/store/store.vue")
+        },
+        {
+          path: 'managersList',
+          name: 'managersList',
+          component: () => import("./components/PlatformManagement/managers/platManegersList.vue")
         },
         {
           path: 'addManagers',
