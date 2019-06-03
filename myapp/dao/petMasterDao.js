@@ -18,11 +18,16 @@ module.exports.addPetMaster = async petMaster => {
 //查询数据
 module.exports.searchPetMaster=async (page)=>{
     const{type,value}=page;
+    let totalCount;
     const petMasterData = await mongoose.model("petMasterModel")
     .find({[type]:{$regex:value,$options:"$i"}})
     .skip(page.pageSize * (page.currentPage - 1))
     .limit(page.pageSize - 0);
-    const totalCount = petMasterData.length;
-    const totalPage = Math.ceil(totalCount / page.pageSize);
+    if(value == ''){
+        totalCount = await mongoose.model("petMasterModel").countDocuments()//获取总条数
+    }else{
+        totalCount = petMasterData.length;
+    }
+    const totalPage = Math.ceil(totalCount / page.pageSize -0);
     return { totalCount, totalPage, petMasterData, currentPage: page.currentPage, pageSize: page.pageSize }
   }

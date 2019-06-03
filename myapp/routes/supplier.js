@@ -1,14 +1,13 @@
 var express = require('express');
 var router = express.Router();
-
+const {addSupplier,searchSupplier,getSupplierByPage } = require("../service/supplierService");
 //分页获取信息
-router.post("/getSupplierByPage",async function(req, res, next) {
-    res.send( await getSupplierByPage(req.body));
+router.get("/getSupplierByPage",async function(req, res, next) {
+    res.send(await getSupplierByPage(req.query));
+   
   });
-
+ 
 //新增
-const {addSupplier,searchSupplier } = require("../service/supplierService");
-
 router.post('/addSupplier', async function (req, res, next) {
     res.send(await addSupplier(req.body));
 });
@@ -17,3 +16,5 @@ router.post('/addSupplier', async function (req, res, next) {
 router.post('/searchSupplier',async function (req, res, next) {
     res.send(await searchSupplier(req.body));
   });
+
+  module.exports = router;

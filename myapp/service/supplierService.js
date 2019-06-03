@@ -1,8 +1,8 @@
 const { addSupplier,searchSupplier,getSupplierByPage} = require("../dao/supplierDao");
 
 //获取数据
-module.exports.getSupplierByPage = async function(supplier) {
-    const data = await getSupplierByPage(supplier);
+module.exports.getSupplierByPage = async page=> {
+    const data = await getSupplierByPage(page);
     return data;
   };
   

@@ -1,17 +1,16 @@
-const { addStore,searchStore,getStoreByPage} = require("../dao/storeDao");
-//获取数据
-module.exports.getStoreByPage = async function(store) {
-    const data = await getStoreByPage(store);
-    return data;
-  };
 
-//新增
+const { addStore,getStore,deleteStore,updateStore } = require("../dao/storeDao.js");
+
 module.exports.addStore = async store => {
     await addStore(store);
     return true;
 }
-
-//查询
-module.exports.searchStore = async function(page) {
-    return await searchStore(page);
-  };
+module.exports.getStore = async () => {//获取
+    return await getStore();
+}
+module.exports.deleteStore = async storeId => {
+    const result = await deleteStore(storeId);
+}
+module.exports.updateStore = async store => {
+    const result = await updateStore(store);
+}

@@ -52,13 +52,9 @@ export default new Router({
           component:()=>import("./components/StoreManagement/goodsManage/goodsSuit.vue")
         },
         {
-          path:'goodType',
-          name:'goodType',
-          component:()=>import("./components/StoreManagement/goodsManage/goodType.vue")
-        },{
-          path:'store',
-          name:'Store',
-          component:()=>import("./components/StoreManagement/store/store.vue")
+          path:'goodsType',
+          name:'goodsType',
+          component:()=>import("./components/StoreManagement/goodsManage/goodsType.vue")
         }
       ]
     },
@@ -67,18 +63,59 @@ export default new Router({
       path: '/platformSystem',
       name: 'PlatformSystem',
       component: () => import('./views/platformSystem.vue'),
-      // children:[
-      //   {
-      //     path:'shopDoor',
-      //     name:'ShopDoor',
-      //     component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
-      //   },
+      children:[
+        {
+          path:'store',
+          name:'Store',
+          component:()=>import("./components/PlatformManagement/store/store.vue")
+        },
+        {
+          path:'managersList',
+          name:'managersList',
+          component:()=>import("./components/PlatformManagement/managers/platManegersList.vue")
+        },
+        {
+          path:'storeManagersList',
+          name:'storeManagersList',
+          component:()=>import("./components/PlatformManagement/managers/storeManagerList.vue")
+        },
+        {
+          path:'addManagers',
+          name:'addManagers',
+          component:()=>import("./components/PlatformManagement/managers/addPlatManagers.vue")
+        },
+        // {
+        //   path:'commodity',
+        //   name:'Commodity',
+        //   component:()=>import("./components/StoreManagement/commodity/commodity.vue")
+        // },
+
       //   {
       //     path:'commodity',
       //     name:'Commodity',
       //     component:()=>import("./components/StoreManagement/commodity/commodity.vue")
       //   },
       // ]
-    }
-  ]
+    
+{
+          path:'supplierList',
+          name:'SupplierList',
+          component:()=>import("./components/PlatformManagement/supplier/supplierList.vue")
+        },
+        {
+          path:'addSupplier',
+          name:'AddSupplier',
+          component:()=>import("./components/PlatformManagement/supplier/addSupplier.vue")
+        },
+        {
+          path:'petMasterList',
+          name:'PetMasterList',
+          component:()=>import("./components/PlatformManagement/petMaster/petMasterList.vue")
+        },
+        {
+          path:'addPetMaster',
+          name:'AddPetMaster',
+          component:()=>import("./components/PlatformManagement/petMaster/addPetMaster.vue")
+        }
+  ]}]
 })

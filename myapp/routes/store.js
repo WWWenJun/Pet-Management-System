@@ -1,19 +1,29 @@
 var express = require('express');
 var router = express.Router();
 
+const { uploadFile } = require("../util/upload.js");
+const { addStore,getStore,deleteStore,updateStore } = require("../service/storeService.js");
 
-//分页获取信息
-router.post("/getStoreByPage",async function(req, res, next) {
-    res.send( await getStoreByPage(req.body));
-  });
-
-//新增
-const {addStore,searchStore } = require("../service/storeService.js");
 router.post('/addStore', async function (req, res, next) {
     res.send(await addStore(req.body));
 });
+router.get('/getStore', async function (req, res, next) {
+    res.send(await getStore(req.query));
+});
 
-//查询
-router.post('/searchStore',async function (req, res, next) {
-    res.send(await searchStore(req.body));
-  });
+router.post('/deleteStore', async (req, res) => {
+    res.send(await deleteStore(req.body));
+});
+router.post('/updateStore', async (req, res) => {
+    res.send(await updateStore(req.body));
+});
+
+// 图片上传
+router.post('/addImages', async function (req, res, next) {
+    const data = await uploadFile(req, res, {
+        fileType: "storeLicense", 
+        path: "./public/images"
+    });
+    res.send(data);
+});
+module.exports = router;

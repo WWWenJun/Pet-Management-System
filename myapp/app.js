@@ -12,7 +12,16 @@ const goodsMethodRouter = require("./routes/goodsMethod.js");
 const goodsOneRouter = require("./routes/goodsOne.js");
 const goodsSuitRouter = require("./routes/goodsSuit.js");
 const goodsTypeRouter = require("./routes/goodsType.js");
+<<<<<<< HEAD
 const storesUsersRouter=require("./routes/storeusers.js")
+=======
+const supplierRouter = require("./routes/supplier.js");
+const petMasterRouter = require("./routes/petMaster.js");
+const serviesRouter = require("./routes/servies.js");
+const managersRouter = require("./routes/managers.js");
+const clerksRouter = require("./routes/clerks.js");
+const storeRouter=require("./routes/store")
+>>>>>>> f17425e345099784dddd052cceb455355fc9e0f0
 
 
 require("./dao/database");
@@ -41,6 +50,7 @@ app.use(session({
   resave:false
 }))
 
+// app.use('/',indexRouter);
 // app.use('/', indexRouter);
 app.use('/goods', goodsRouter);
 app.use('/goodsMethod', goodsMethodRouter);
@@ -48,6 +58,12 @@ app.use('/goodsOne', goodsOneRouter);
 app.use('/goodsSuit', goodsSuitRouter);
 app.use('/goodsType', goodsTypeRouter);
 app.use("/storeusers",storesUsersRouter)
+app.use('/servies', serviesRouter);
+app.use('/managers', managersRouter);
+app.use('/clerks', clerksRouter);
+app.use('/store', storeRouter);
+app.use('/supplier',supplierRouter);
+app.use('/petMaster',petMasterRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
