@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
 <div>
     <el-button type="primary" @click="dialogFormVisible = true" plain icon="el-icon-edit">增加商品</el-button>
 <el-dialog title="新增商品" :visible.sync="dialogFormVisible">
@@ -246,17 +245,159 @@
   </div>
 </div>
   
-=======
-    
->>>>>>> parent of d341ef2... wj
 </template>
-
 <script>
-export default {
+import {createNamespacedHelpers} from 'vuex'
+const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
+  export default {
+        mounted(){
+        this.getGoodsOne();
+        this.getGoodsMethod();
+        this.getGoodsType();
+        this.getGoodsSuit();
+        this.getGoods()
+  },
+        computed:{
+        ...mapState(['goodsOneData','goodsMethodData',
+        'goodsSuitData','goodsTypeData','goodsData','currentPage',
+        'pageSize','totalPages','totalCount']),
+                currentPage: {
+            get: mapState(['currentPage']).currentPage,
+            set: mapMutations(['setCurrentPage']).setCurrentPage
+        },
+        pageSize: {
+            get: mapState(['pageSize']).pageSize,
+            set: mapMutations(['setPageSize']).setPageSize
+        }
+    },
+      methods:{
+              ...mapActions(['getGoodsOne','getGoodsMethod','getGoodsType','getGoodsSuit','addGood',"getGoods",'deleteGoods']),
+  handleAvatarSuccess(res, file) {
+        this.imageUrl = URL.createObjectURL(file.raw);
+        console.log(URL.createObjectURL(file.raw));
+        
+      },
+      changeGood(){
+        this.changegood=false
+      },
+      deletes(data){
+        this.deleteGoods(data)
+        this.getGoods()               
+      },
+      change(data){
+        this.changegood=true
+        this.changeGoods=data
+        console.log(data);
+        
+      },
+      addGoods(){
+        this.dialogFormVisible=false,
+       this.addGood(this.newGoods)
+        this.getGoods()       
+      },
+      handleAvatarSuccess(res,file){
+        this.newGoods.img=res.data.url
+      },
+      beforeAvatarUpload(file) {
+        const isJPG = file.type === 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 < 2;
 
-}
+        if (!isJPG) {
+          this.$message.error('上传头像图片只能是 JPG 格式!');
+        }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 2MB!');
+        }
+        return isJPG && isLt2M;
+      },
+           handleSizeChange(val) {
+             this.pageSize=val
+        this.getGoods()
+        console.log(`每页 ${val} 条`);
+      },
+      handleCurrentChange(val) {
+        this.currentPage=val
+        this.getGoods()
+        console.log(`每页 ${val} 条`);
+        
+      }
+      },
+    data() {
+      return {
+        newGoods:{
+            name:'',
+            typeId:'',
+            methodId:'',
+            suitId:'',
+            oneId:'',
+            pack:'',
+            flavor:'',
+            special:'',
+            place:'',
+            data:'',
+            quality:'',
+            supplierId:'',
+            item:'',
+            price:'',
+            img:'',
+            storeId:''
+      },
+        dialogFormVisible:false,
+        changeGoods:{},
+        changegood:false
+      }
+    }
+  }
 </script>
-
-<style>
-
+<style scope>
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+  }
+  .avatar {
+    width: 80px;
+    height: 80px;
+    display: block;
+  }
+  .demo-table-expand {
+    font-size: 0;
+  }
+  .el-main{
+      line-height: normal;
+  }
+  .el-form-item__content{
+      /* line-height: 80px; */
+      height: 80px;      
+  }
+  .el-form-item{
+      display: block;
+      height: 80px;
+  }
+  .demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+  }
+  .demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 50%;
+  }
+  #goodimg{
+    width: 100px;
+    height: 100px;
+  }
 </style>

@@ -12,7 +12,6 @@ export default new Router({
       component: () => import('./views/storeSystem.vue'),
       children:[
         {
-<<<<<<< HEAD
 
           path:'storeList',
           name:'StoreList',
@@ -45,18 +44,6 @@ export default new Router({
           component:()=>import("./components/StoreManagement/clerk/clerkList.vue")
         },
 {
-=======
-          path:'shopDoor',
-          name:'ShopDoor',
-          component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
-        },
-        {
-          path:'commodity',
-          name:'Commodity',
-          component:()=>import("./components/StoreManagement/commodity/commodity.vue")
-        },
-        {
->>>>>>> parent of d341ef2... wj
           path:'goods',
           name:'goods',
           component:()=>import("./components/StoreManagement/goodsManage/goods.vue")
@@ -77,19 +64,9 @@ export default new Router({
           component:()=>import("./components/StoreManagement/goodsManage/goodsSuit.vue")
         },
         {
-<<<<<<< HEAD
           path:'goodsType',
           name:'goodsType',
           component:()=>import("./components/StoreManagement/goodsManage/goodsType.vue")
-=======
-          path:'goodType',
-          name:'goodType',
-          component:()=>import("./components/StoreManagement/goodsManage/goodType.vue")
-        },{
-          path:'store',
-          name:'Store',
-          component:()=>import("./components/StoreManagement/store/store.vue")
->>>>>>> parent of d341ef2... wj
         }
         // {
         //   path:'store',
@@ -133,7 +110,6 @@ export default new Router({
       //     component:()=>import("./components/StoreManagement/commodity/commodity.vue")
       //   },
       // ]
-<<<<<<< HEAD
     
 {
           path:'supplierList',
@@ -156,8 +132,4 @@ export default new Router({
           component:()=>import("./components/PlatformManagement/petMaster/addPetMaster.vue")
         }
   ]}]
-=======
-    }
-  ]
->>>>>>> parent of d341ef2... wj
 })
