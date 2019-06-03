@@ -14,10 +14,15 @@
                 active-text-color="#ffd04b"
                 :router="true"
               >
-                <el-menu-item index="/storeSystem/store">
-                  <i class="el-icon-school"></i>
-                  <span slot="title">门店申请</span>
-                </el-menu-item>
+                
+                <el-submenu index="2">
+                  <template slot="title">
+                    <i class="el-icon-school"></i>
+                    <span>门店申请</span>
+                  </template>
+                  <el-menu-item index="/storeSystem/storeList">门店列表</el-menu-item>
+                  <el-menu-item index="/storeSystem/addStore">新增门店</el-menu-item>
+                </el-submenu>
                 <el-submenu index="2">
                   <template slot="title">
                     <i class="el-icon-service"></i>
@@ -66,7 +71,7 @@
 export default {};
 </script>
 
-<style>
+<style scope>
 .aside {
   width: 400px;
 }
@@ -74,6 +79,5 @@ export default {};
   background-color: #e9eef3;
   color: #333;
   text-align: center;
-  line-height: 160px;
 }
 </style>

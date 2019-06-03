@@ -12,10 +12,15 @@ export default new Router({
       component: () => import('./views/storeSystem.vue'),
       children:[
         {
-          path:'store',
-          name:'Store',
-          component:()=>import("./components/StoreManagement/store/store.vue")
-        }
+          path:'storeList',
+          name:'StoreList',
+          component:()=>import("./components/StoreManagement/store/storeList.vue")
+        },
+        {
+          path:'addStore',
+          name:'AddStore',
+          component:()=>import("./components/StoreManagement/store/addStore.vue")
+        },
       ]
     },
     // 平台路径
@@ -23,18 +28,18 @@ export default new Router({
       path: '/platformSystem',
       name: 'PlatformSystem',
       component: () => import('./views/platformSystem.vue'),
-      // children:[
-      //   {
-      //     path:'shopDoor',
-      //     name:'ShopDoor',
-      //     component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
-      //   },
+      children:[
+        {
+          path:'store',
+          name:'Store',
+          component:()=>import("./components/PlatformManagement/store/store.vue")
+        },
       //   {
       //     path:'commodity',
       //     name:'Commodity',
       //     component:()=>import("./components/StoreManagement/commodity/commodity.vue")
       //   },
-      // ]
+      ]
     }
   ]
 })

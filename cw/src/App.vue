@@ -4,10 +4,10 @@
   </div>
 </template>
 <script>
-import Store from "./components/StoreManagement/store/store";
+// import StoreList from "./components/StoreManagement/store/storeList";
+// import AddStore from "./components/StoreManagement/store/addStore";
 export default {
   components: {
-Store
   }
 };
 </script>
