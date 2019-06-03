@@ -9,17 +9,14 @@
           text-color="#fff"
           active-text-color="#ffd04b"
           router
-<<<<<<< HEAD
         >
-          <el-menu-item index="1">供应商管理</el-menu-item>
-=======
-         >
+        
+         
           <el-submenu index="1">
             <template slot="title">供应商管理</template>
             <el-menu-item index="/platformSystem/SupplierList">供应商列表</el-menu-item>
             <el-menu-item index="/platformSystem/AddSupplier" >新增供应商</el-menu-item>
           </el-submenu>
->>>>>>> 809795d61e2780600058e4b1e7d8c8350952bbd1
           <el-submenu index="2">
             <template slot="title">宠主管理</template>
             <el-menu-item index="/platformSystem/PetMasterList">宠主列表</el-menu-item>

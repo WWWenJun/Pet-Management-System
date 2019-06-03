@@ -5,18 +5,11 @@ mongoose.connection.on('connected', function() {
 console.log('Mongoose connected to ' + dbURI);
 });
 
-// require("./models/usersModel");
-// require("./models/userYModel");
-// require("./models/theatersModel");
-// require("./models/seatStatusModel");
-// require("./models/seatsModel");
-// require("./models/schedulesModel");
-// require("./models/ordersModel");
-// require("./models/moviesModel");
-// require("./models/cinemasModel");
-// require("./models/goodsMethodModel.js");
-// require("./models/goodsModel.js");
-// require("./models/goodsOneModel.js");
-// require("./models/goodsSuitModel.js");
-// require("./models/goodsTypeModel.js");
+require("./models/goodsMethodModel.js");
+require("./models/goodsModel.js");
+require("./models/goodsOneModel.js");
+require("./models/goodsSuitModel.js");
+require("./models/goodsTypeModel.js");
+require("./models/supplierModel.js");
+require("./models/petMasterModel.js");
 require("./models/storeModel");
