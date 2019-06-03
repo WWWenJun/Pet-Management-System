@@ -245,109 +245,13 @@
   </div>
 </div>
   
+    
 </template>
-<script>
-import {createNamespacedHelpers} from 'vuex'
-const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
-  export default {
-        mounted(){
-        this.getGoodsOne();
-        this.getGoodsMethod();
-        this.getGoodsType();
-        this.getGoodsSuit();
-        this.getGoods()
-  },
-        computed:{
-        ...mapState(['goodsOneData','goodsMethodData',
-        'goodsSuitData','goodsTypeData','goodsData','currentPage',
-        'pageSize','totalPages','totalCount']),
-                currentPage: {
-            get: mapState(['currentPage']).currentPage,
-            set: mapMutations(['setCurrentPage']).setCurrentPage
-        },
-        pageSize: {
-            get: mapState(['pageSize']).pageSize,
-            set: mapMutations(['setPageSize']).setPageSize
-        }
-    },
-      methods:{
-              ...mapActions(['getGoodsOne','getGoodsMethod','getGoodsType','getGoodsSuit','addGood',"getGoods",'deleteGoods']),
-  handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw);
-        console.log(URL.createObjectURL(file.raw));
-        
-      },
-      changeGood(){
-        this.changegood=false
-      },
-      deletes(data){
-        this.deleteGoods(data)
-        this.getGoods()               
-      },
-      change(data){
-        this.changegood=true
-        this.changeGoods=data
-        console.log(data);
-        
-      },
-      addGoods(){
-        this.dialogFormVisible=false,
-       this.addGood(this.newGoods)
-        this.getGoods()       
-      },
-      handleAvatarSuccess(res,file){
-        this.newGoods.img=res.data.url
-      },
-      beforeAvatarUpload(file) {
-        const isJPG = file.type === 'image/jpeg';
-        const isLt2M = file.size / 1024 / 1024 < 2;
 
-        if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
-        }
-        if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!');
-        }
-        return isJPG && isLt2M;
-      },
-           handleSizeChange(val) {
-             this.pageSize=val
-        this.getGoods()
-        console.log(`每页 ${val} 条`);
-      },
-      handleCurrentChange(val) {
-        this.currentPage=val
-        this.getGoods()
-        console.log(`每页 ${val} 条`);
-        
-      }
-      },
-    data() {
-      return {
-        newGoods:{
-            name:'',
-            typeId:'',
-            methodId:'',
-            suitId:'',
-            oneId:'',
-            pack:'',
-            flavor:'',
-            special:'',
-            place:'',
-            data:'',
-            quality:'',
-            supplierId:'',
-            item:'',
-            price:'',
-            img:'',
-            storeId:''
-      },
-        dialogFormVisible:false,
-        changeGoods:{},
-        changegood:false
-      }
-    }
-  }
+<script>
+export default {
+
+}
 </script>
 <style>
 .avatar-uploader .el-upload {
@@ -400,4 +304,8 @@ const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
     width: 100px;
     height: 100px;
   }
+</style>
+
+<style>
+
 </style>

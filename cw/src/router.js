@@ -43,6 +43,16 @@ export default new Router({
           component:()=>import("./components/StoreManagement/clerk/clerkList.vue")
         },
         {
+          path:'shopDoor',
+          name:'ShopDoor',
+          component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
+        },
+        {
+          path:'commodity',
+          name:'Commodity',
+          component:()=>import("./components/StoreManagement/commodity/commodity.vue")
+        },
+        {
           path:'goods',
           name:'goods',
           component:()=>import("./components/StoreManagement/goodsManage/goods.vue")
@@ -71,13 +81,17 @@ export default new Router({
           path:'goodsType',
           name:'goodsType',
           component:()=>import("./components/StoreManagement/goodsManage/goodsType.vue")
+        },
+        {
+          path:'goodType',
+          name:'goodType',
+          component:()=>import("./components/StoreManagement/goodsManage/goodType.vue")
+        },
+        {
+          path:'store',
+          name:'Store',
+          component:()=>import("./components/StoreManagement/store/store.vue")
         }
-        // {
-        //   path:'store',
-        //   name:'Store',
-        //   component:()=>import("./components/StoreManagement/store/store.vue")
-        // }
-
       ]
     },
     // 平台路径
@@ -106,20 +120,6 @@ export default new Router({
           name:'addManagers',
           component:()=>import("./components/PlatformManagement/managers/addPlatManagers.vue")
         },
-        // {
-        //   path:'commodity',
-        //   name:'Commodity',
-        //   component:()=>import("./components/StoreManagement/commodity/commodity.vue")
-        // },
-
-      //   {
-      //     path:'commodity',
-      //     name:'Commodity',
-      //     component:()=>import("./components/StoreManagement/commodity/commodity.vue")
-    //   },
-      //   },
-      // ]
-    
         {
           path:'supplierList',
           name:'SupplierList',
@@ -145,3 +145,4 @@ export default new Router({
   ]
   })
   
+
