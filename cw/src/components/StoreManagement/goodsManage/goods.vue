@@ -154,7 +154,7 @@
   </div>
 </el-dialog>
   <el-table
-    :data="goodsData"
+    :data=""
     style="width: 100%">
     <el-table-column type="expand">
       <template slot-scope="props">
