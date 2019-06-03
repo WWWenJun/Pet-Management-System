@@ -12,9 +12,13 @@ const goodsMethodRouter = require("./routes/goodsMethod.js");
 const goodsOneRouter = require("./routes/goodsOne.js");
 const goodsSuitRouter = require("./routes/goodsSuit.js");
 const goodsTypeRouter = require("./routes/goodsType.js");
+<<<<<<< HEAD
 const serviesRouter = require("./routes/servies.js");
 const managersRouter = require("./routes/managers.js");
 const clerksRouter = require("./routes/clerks.js");
+=======
+const storeRouter=require("./routes/store")
+>>>>>>> 5b9d800ff3f0b414e12c0779b6eab93205d42891
 
 
 require("./dao/database");
@@ -44,6 +48,7 @@ app.use(session({
 }))
 
 // app.use('/',indexRouter);
+// app.use('/', indexRouter);
 app.use('/goods', goodsRouter);
 app.use('/goodsMethod', goodsMethodRouter);
 app.use('/goodsOne', goodsOneRouter);
@@ -52,6 +57,7 @@ app.use('/goodsType', goodsTypeRouter);
 app.use('/servies', serviesRouter);
 app.use('/managers', managersRouter);
 app.use('/clerks', clerksRouter);
+app.use('/store', storeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
