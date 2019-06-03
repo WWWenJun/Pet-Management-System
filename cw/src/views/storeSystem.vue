@@ -27,16 +27,16 @@
                     <i class="el-icon-service"></i>
                     <span>服务管理</span>
                   </template>
-                  <el-menu-item index="2-1">选项1</el-menu-item>
-                  <el-menu-item index="2-2">选项2</el-menu-item>
+                  <el-menu-item index="/storeSystem/serviesList">服务列表</el-menu-item>
+                  <el-menu-item index="/storeSystem/addServies">增加服务</el-menu-item>
                 </el-submenu>
                 <el-submenu index="3">
                   <template slot="title">
                     <i class="el-icon-shopping-cart-2"></i>
-                    <span>商品管理</span>
+                    <span>店员管理</span>
                   </template>
-                  <el-menu-item index="3-1">选项1</el-menu-item>
-                  <el-menu-item index="3-2">选项2</el-menu-item>
+                  <el-menu-item index="/storeSystem/clerksList">店员列表</el-menu-item>
+                  <el-menu-item index="/storeSystem/addClerks">增加店员</el-menu-item>
                 </el-submenu>
                 <el-submenu index="4">
                   <template slot="title">
@@ -77,7 +77,7 @@ export default {};
 .el-main {
   background-color: #e9eef3;
   color: #333;
-  text-align: center;
-  line-height: 160px;
+  /* text-align: center; */
+  line-height: 50px;
 }
 </style>
