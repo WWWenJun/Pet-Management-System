@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="line-height: 50px;margin-left:30px;text-align:left">
       <el-select v-model="type" style="width:120px;" placeholder="请选择">
           <el-option
             v-for="item in options"
@@ -8,7 +8,7 @@
             :value="item.value">
           </el-option>
       </el-select>
-      <el-input v-model="value" @change="getService" style="width:250px;margin-left:20px"></el-input>
+      <el-input suffix-icon="el-icon-search" v-model="value" @change="getService" style="width:250px;margin-left:20px"></el-input>
       <!-- @row-click点击获取行 -->
         <el-table
       :data="serviesData"
@@ -239,8 +239,10 @@ export default {
 };
 </script>
 
-<style>
-.el-main {
+<style  >
+
+
+.el-main { 
   background-color: wheat;
 }
 .el-table-column {
@@ -249,15 +251,15 @@ export default {
 .el-header {
   background-color: #b3c0d1;
   color: #333;
-  text-align: center;
-  line-height: 30px;
+  /* text-align: center; */
+  /* line-height: 30px; */
 }
 
 .el-aside {
   background-color: #d3dce6;
   color: #333;
-  text-align: center;
-  line-height: 200px;
+  /* text-align: center; */
+  /* line-height: 200px; */
 }
 </style>
 
