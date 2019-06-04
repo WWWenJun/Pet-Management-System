@@ -4,11 +4,11 @@
       <div style="margin-top: 15px;">
         <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
           <el-select v-model="select" slot="prepend" placeholder="请选择">
-            <el-option label="餐厅名" value="1"></el-option>
-            <el-option label="订单号" value="2"></el-option>
+            <el-option label="名称" value="名称"></el-option>
+            <el-option label="地址" value="地址"></el-option>
             <el-option label="用户电话" value="3"></el-option>
           </el-select>
-          <el-button slot="append" icon="el-icon-search"></el-button>
+          <el-button slot="append" icon="el-icon-search" @click="selectStore"></el-button>
         </el-input>
       </div>
       <el-table
@@ -98,7 +98,9 @@
     </template>
     <div class="block">
       <el-pagination
-        :page-sizes="[5, 20, 30, 40]"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :page-sizes="[5,10, 20, 30, 40]"
         :page-size="5"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
@@ -121,18 +123,24 @@ export default {
       radio: "",
       storeid: "",
       total: 0,
-      pagesize:5
+      currentPage: 1,
+      pagesize: 5
     };
   },
   created() {
-    // this.getStore();
     this.getStoreByPage();
   },
   methods: {
-    getStore() {
+    selectStore() {
+      console.log(this.input3);
+      console.log(this.select);
       axios({
         method: "get",
-        url: "/store/getStore"
+        url: "/store/selectStore",
+        params:{
+          title:this.select,
+          value:this.input3
+        }
       }).then(res => {
         this.tableData = res.data;
         this.total = res.data.length;
@@ -147,7 +155,7 @@ export default {
           _id: id
         }
       }).then(res => {
-        this.getStore();
+        this.getStoreByPage();
       });
     },
     updateStore() {
@@ -160,7 +168,7 @@ export default {
         }
       }).then(res => {
         console.log(res);
-        this.getStore();
+        this.getStoreByPage();
       });
       this.dialogVisible = false;
     },
@@ -176,12 +184,21 @@ export default {
         method: "get",
         url: "/store/getStoreByPage",
         params: {
-          currentPage: 1,
-          pageSize:this.pagesize
+          currentPage: this.currentPage,
+          pageSize: this.pagesize
         }
       }).then(res => {
-        console.log(res);
+        this.tableData = res.data.storesData;
+        this.total = res.data.totalCount;
       });
+    },
+    handleSizeChange(val) {
+      this.pagesize = val;
+      this.getStoreByPage();
+    },
+    handleCurrentChange(val) {
+      this.currentPage = val;
+      this.getStoreByPage();
     }
   }
 };

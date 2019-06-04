@@ -14,7 +14,6 @@
                 active-text-color="#ffd04b"
                 :router="true"
               >
-                
                 <el-submenu index="1">
                   <template slot="title">
                     <i class="el-icon-school"></i>
@@ -40,7 +39,7 @@
                   <el-menu-item index="/storeSystem/goodsMethod">品类</el-menu-item>
                   <el-menu-item index="/storeSystem/goodsType">材质或者制作方法</el-menu-item>
                   <el-menu-item index="/storeSystem/goodsOne">适用规格</el-menu-item>
-                  <el-menu-item index="/storeSystem/goodsSuit">专属规格</el-menu-item>         
+                  <el-menu-item index="/storeSystem/goodsSuit">专属规格</el-menu-item>
                 </el-submenu>
                 <el-submenu index="4">
                   <template slot="title">
@@ -71,22 +70,22 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 
 export default {
-    created(){
-        this.login()
-    },
-    methods:{
-login(){
-        axios({
-                method:"post",
-                url:"/storeusers/isLogin",
-            }).then((msg)=>{
-                console.log(msg)
-            })
-      }
+  created() {
+    this.login();
+  },
+  methods: {
+    login() {
+      axios({
+        method: "post",
+        url: "/storeusers/isLogin"
+      }).then(msg => {
+        console.log(msg);
+      });
     }
+  }
 };
 </script>
 
