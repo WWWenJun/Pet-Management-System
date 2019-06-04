@@ -42,10 +42,14 @@ export default {
 }
 </script>
 <style>
+
 h3{
   height:100px;
-  text-align: center;
-}
+  width:200px;
+  margin: auto;
+  font-size: 30px;
+  color:gold
+  }
 .el-form-item{
   width:300px;
   height:80px;
@@ -53,6 +57,10 @@ h3{
 }
 .el-input {
   height: 30px;
-  width:300px;
+  width:300px; 
+}
+.el-button{
+  background-color: gold;
+  border: none;
 }
 </style>
