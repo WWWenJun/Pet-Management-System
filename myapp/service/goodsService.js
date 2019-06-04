@@ -1,4 +1,4 @@
-const { addGoods,getGoods,deleteGoods,changeGoods } = require("../dao/goodsDao.js");
+const { addGoods,getGoods,deleteGoods,changeGoods,searchGoods } = require("../dao/goodsDao.js");
 
 module.exports.addGoods = async data => {
     await addGoods(data);
@@ -6,6 +6,9 @@ module.exports.addGoods = async data => {
 }
 module.exports.getGoods = async (page) => {
     return await getGoods(page);
+}
+module.exports.searchGoods = async (page) => {
+    return await searchGoods(page);
 }
 module.exports.changeGoods = async (page) => {
     return await changeGoods(page);
