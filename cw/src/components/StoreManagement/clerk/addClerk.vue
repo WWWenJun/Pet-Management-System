@@ -18,10 +18,21 @@ export default {
       position: "",
       phone: "",
       level: "",
+      userId:''
     };
   },
   methods: {
+    login(){
+        axios({
+                method:"post",
+                url:"/storeusers/isLogin",
+            }).then((msg)=>{
+                console.log(msg);
+                this.userId=msg.data;
+            })
+      },
     add() {
+      this.login();
       //新增
       axios({
         method: "post",
@@ -31,8 +42,11 @@ export default {
         position: this.position,
         phone: this.phone,
         level: this.level, 
+        userId:this.userId
         }
       }).then(res => {
+        console.log(res);
+        
         location.hash = "#/storeSystem/clerksList";
       });
     }

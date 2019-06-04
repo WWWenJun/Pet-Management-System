@@ -8,6 +8,10 @@ const clerkSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "storeModel"
     },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "storeusersModel"
+    },
     level:String
 })
 // 定义数据模型
