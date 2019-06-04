@@ -86,7 +86,7 @@ export default {
   /* text-align: center; */
   line-height: 50px;
   text-align: center;
-  line-height: 160px;
+  /* line-height: 160px; */
   padding: 0;
 }
 </style>

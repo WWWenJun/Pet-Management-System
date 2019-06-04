@@ -85,7 +85,6 @@ export default {
           alert("输入错误,请重新输入");
         }
       });
-       console.log(this.ruleForm.usephone, this.ruleForm.password);
     }
   }
 };
