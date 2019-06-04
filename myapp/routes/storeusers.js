@@ -8,7 +8,7 @@ const { login, isUsers, addUsers, reg, queryUsers,  modUser, delUser } = require
 /* GET users listing. //用户路由*/
 router.post('/isLogin', async function (req, res, next) {//判断用户的登陆状态
   if (req.session.user) {
-    res.send(req.session.user.userAccount);
+    res.send(req.session.user);
   } else { res.send(false); }
 });
 router.get("/isUsers", async function (req, res, next) {//判断---用户账号是否存在
@@ -24,8 +24,10 @@ router.post('/logout', async function (req, res, next) {//用户退出
 });
 router.post('/login', async function (req, res, next) {//判断用户能否登录
   const result = await login(req.body);
-  if (result) {
-    req.session.user = req.body;
+  if (result.length>0) {
+    console.log(result);
+    
+    req.session.user = result[0]._id;
     res.send(result);
   } else {
     res.send(result);

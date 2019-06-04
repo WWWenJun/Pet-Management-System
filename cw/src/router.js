@@ -16,7 +16,7 @@ export default new Router({
     },
     // 门店路径
     {
-      path: '/storeSystem',
+      path: '/storeSystem/:tel',
       name: 'StoreSystem',
       component: () => import('./views/storeSystem.vue'),
       children: [
@@ -41,8 +41,8 @@ export default new Router({
           component: () => import("./components/StoreManagement/goodsManage/goodsMethod.vue")
         },
         {
-          path: 'goodType',
-          name: 'goodType',
+          path: 'goodsType',
+          name: 'goodsType',
           component: () => import("./components/StoreManagement/goodsManage/goodsType.vue")
         },
         {
@@ -105,7 +105,7 @@ export default new Router({
           path: 'addPetMaster',
           name: 'AddPetMaster',
           component: () => import("./components/PlatformManagement/petMaster/addPetMaster.vue")
-        },
+        }
       ]
     },
   ]

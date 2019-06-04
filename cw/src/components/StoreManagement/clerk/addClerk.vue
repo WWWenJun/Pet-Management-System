@@ -1,5 +1,5 @@
 <template>
-   <div style="">
+   <div style="line-height: 50px;margin-left:30px;text-align:left">
             <h1>增加店员</h1>
           <span style="margin-left:32px">姓名: </span><el-input style="width:200px;" suffix-icon="el-icon-user-solid" v-model="name" placeholder="请输入姓名"></el-input><br> 
             <span style="margin-left:32px">职级: </span><el-input style="width:200px" v-model="position" suffix-icon="el-icon-s-check" placeholder="请输入职级"></el-input><br>

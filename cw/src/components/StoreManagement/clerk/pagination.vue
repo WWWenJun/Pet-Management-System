@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="line-height: 50px;margin-left:30px;text-align:left">
         <div class="block">
     <el-pagination
       @size-change="setPageSize"

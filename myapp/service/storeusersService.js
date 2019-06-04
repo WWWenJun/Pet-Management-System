@@ -2,7 +2,7 @@ const { login, isUsers, addUsers, queryUsers, modUser, delUser } = require("../d
 
 module.exports.login = async function (user) {//服务层发送数据给持久层
     const data = await login(user);
-    return data.length > 0 ? true : false;
+    return data.length > 0 ? data : false;
 }
 
 module.exports.isUsers = async function (users) {//判断---用户是否存在
