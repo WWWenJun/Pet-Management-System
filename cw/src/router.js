@@ -36,6 +36,11 @@ export default new Router({
           component: () => import("./components/StoreManagement/goodsManage/goodsSuit.vue")
         },
         {
+          path: 'goodsMethod',
+          name: 'goodsMethod',
+          component: () => import("./components/StoreManagement/goodsManage/goodsMethod.vue")
+        },
+        {
           path: 'goodType',
           name: 'goodType',
           component: () => import("./components/StoreManagement/goodsManage/goodsType.vue")
@@ -101,11 +106,6 @@ export default new Router({
           name: 'AddPetMaster',
           component: () => import("./components/PlatformManagement/petMaster/addPetMaster.vue")
         },
-        {
-          path: 'store',
-          name: 'Store',
-          component: () => import("./components/PlatformManagement/store/store.vue")
-        }
       ]
     },
   ]
