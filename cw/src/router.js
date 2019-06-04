@@ -16,7 +16,7 @@ export default new Router({
     },
     // 门店路径
     {
-      path: '/storeSystem',
+      path: '/storeSystem/:tel',
       name: 'StoreSystem',
       component: () => import('./views/storeSystem.vue'),
       children: [
