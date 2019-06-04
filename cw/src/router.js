@@ -46,14 +46,14 @@ export default new Router({
           component: () => import("./components/StoreManagement/goodsManage/goodsSuit.vue")
         },
         {
-          path: 'goodType',
-          name: 'goodType',
-          component: () => import("./components/StoreManagement/goodsManage/goodType.vue")
-        },
-        {
           path: 'goodsType',
           name: 'goodsType',
           component: () => import("./components/StoreManagement/goodsManage/goodsType.vue")
+        },
+        {
+          path: 'goodsMethod',
+          name: 'goodsMethod',
+          component: () => import("./components/StoreManagement/goodsManage/goodsMethod.vue")
         }
       ]
     },

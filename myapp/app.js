@@ -12,16 +12,13 @@ const goodsMethodRouter = require("./routes/goodsMethod.js");
 const goodsOneRouter = require("./routes/goodsOne.js");
 const goodsSuitRouter = require("./routes/goodsSuit.js");
 const goodsTypeRouter = require("./routes/goodsType.js");
-<<<<<<< HEAD
 const storesUsersRouter=require("./routes/storeusers.js")
-=======
 const supplierRouter = require("./routes/supplier.js");
 const petMasterRouter = require("./routes/petMaster.js");
 const serviesRouter = require("./routes/servies.js");
 const managersRouter = require("./routes/managers.js");
 const clerksRouter = require("./routes/clerks.js");
 const storeRouter=require("./routes/store")
->>>>>>> f17425e345099784dddd052cceb455355fc9e0f0
 
 
 require("./dao/database");
