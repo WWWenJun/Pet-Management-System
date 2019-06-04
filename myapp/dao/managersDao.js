@@ -9,8 +9,8 @@ module.exports.addManagers = async Managers => {
     return await mongoose.model("managerModel").create(Managers);
 }
 module.exports.changeManagers = async Managers => {
-   const { _id,userName,passWord,phone, email,name,role,state} = Managers;
-    return mongoose.model("managerModel").update({ _id}, {userName,passWord,phone, email,name,role,state});
+   const { _id} = Managers;
+    return mongoose.model("managerModel").update({ _id}, Managers);
 }
 module.exports.getManagers = async () => {//查找，关联
     return await mongoose.model("managerModel").find() ;

@@ -21,9 +21,10 @@
         width="120px">
       </el-table-column>
       <el-table-column
-        prop="storeId"
+        prop="storeId.name"
         label="门店"
-        width="120px">
+        width="120px"
+        >
       </el-table-column>
       <el-table-column
         prop="position"
@@ -73,7 +74,12 @@
             <el-form-item label="水平" :label-width="formLabelWidth">
            <el-input v-model="form.level" autocomplete="off"></el-input>
             </el-form-item>
-            
+             <el-form-item label="门店" :label-width="formLabelWidth">
+              <el-select style="width:200px" v-model="storeId" placeholder="选择门店">
+                <el-option  v-for=" item in stores" :key="item._id" :label="item.name" :value="item._id"></el-option>
+              </el-select>
+            </el-form-item>
+             
         </el-form>
         <div slot="footer"  >
             <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -95,6 +101,9 @@ export default {
         dialogFormVisible: false,
         index:'',
         row:{},
+        userId:'',
+        storeId:'',
+        stores: [],
         // type:'',
         // value:'',
         options: [
@@ -144,6 +153,27 @@ export default {
     }
   },
   methods: {
+     login() {//获取用户id
+      axios({
+        method: "post",
+        url: "/storeusers/isLogin"
+      }).then(msg => {
+        console.log(msg.data);
+        this.userId = msg.data;
+        this.getStores(msg.data);
+      });
+    },
+    getStores(data) {//获取用户的门店id
+      axios({
+        method: "get",
+        url: "/store/getStore",
+        params:{userId:data}
+      }).then(msg => {
+        console.log(msg);
+          this.stores=msg.data;
+          console.log(this.stores);
+      });
+    },
     ...mapMutations(["setClerksData"]),
     ...mapActions(["getClerksByPageAsync"]),
     getClerks() {//模糊查询
@@ -164,9 +194,9 @@ export default {
         axios({
         method: "post",
         url: "/clerks/changeClerks",
-        data: this.form
+        data: {...this.form,storeId:this.storeId}
       }).then(res => {
-        console.log(res);
+        console.log(12);
         this.getClerksByPageAsync();
       });
     },
@@ -206,6 +236,7 @@ export default {
     }
   },
   mounted() {
+    this.login();
     this.getClerksByPageAsync();
   }
 };
