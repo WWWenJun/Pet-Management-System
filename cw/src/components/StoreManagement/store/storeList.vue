@@ -82,7 +82,8 @@ let axios = require("axios");
 export default {
   data() {
     return {
-      tableData: []
+      tableData: [],
+      pageSize:5
     };
   },
   created() {
