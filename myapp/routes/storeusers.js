@@ -25,8 +25,6 @@ router.post('/logout', async function (req, res, next) {//用户退出
 router.post('/login', async function (req, res, next) {//判断用户能否登录
   const result = await login(req.body);
   if (result.length>0) {
-    console.log(result);
-    
     req.session.user = result[0]._id;
     res.send(result);
   } else {

@@ -79,8 +79,12 @@ export default {
       scale: "", //佣金比例
       state: "", //门店状态
       imageUrl: "",
-      imageUrlHead: ""
+      imageUrlHead: "",
+      userId:''
     };
+  },
+  created(){
+    this.login();
   },
   methods: {
     addBtn() {
@@ -97,10 +101,14 @@ export default {
           phone: this.phone, //联系电话
           head: this.head, //头图
           item: this.item, //特色
-          scale: this.scale, //佣金比例
+          scale: this.scale ,//佣金比例
+          userId:this.userId
         }
       }).then(res => {
-        console.log(res);
+        if (res.data) {
+          alert("新增成功");
+          this.$router.push({path:'/storeSystem/storeList'})
+        }
       });
     },
     handleAvatarSuccess(res, file) {
@@ -121,6 +129,15 @@ export default {
         this.$message.error("上传头像图片大小不能超过 2MB!");
       }
       return isJPG && isLt2M;
+    },
+    login() {
+      axios({
+        method: "post",
+        url: "/storeusers/isLogin"
+      }).then(msg => {
+        this.userId = msg.data;
+        console.log(msg.data);
+      });
     }
   }
 };

@@ -20,9 +20,9 @@ const storeSchema = new mongoose.Schema({
         type:String,
         default:'申请中'
     },
-    user:{
+    userId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user"
+        ref: "storeusersModel"
     }
 })
 // 创建学生数据模型
