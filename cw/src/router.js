@@ -20,16 +20,6 @@ export default new Router({
       name: 'StoreSystem',
       component: () => import('./views/storeSystem.vue'),
       children: [
-        // {
-        //   path:'shopDoor',
-        //   name:'ShopDoor',
-        //   component:()=>import("./components/StoreManagement/shopDoor/shopDoor.vue")
-        // },
-        // {
-        //   path:'commodity',
-        //   name:'Commodity',
-        //   component:()=>import("./components/StoreManagement/commodity/commodity.vue")
-        // },
         {
           path: 'goods',
           name: 'goods',
@@ -51,9 +41,19 @@ export default new Router({
           component: () => import("./components/StoreManagement/goodsManage/goodsMethod.vue")
         },
         {
-          path: 'goodsType',
-          name: 'goodsType',
+          path: 'goodType',
+          name: 'goodType',
           component: () => import("./components/StoreManagement/goodsManage/goodsType.vue")
+        },
+        {
+          path: 'storeList',
+          name: 'StoreList',
+          component: () => import("./components/StoreManagement/store/storeList.vue")
+        },
+        {
+          path: 'addStore',
+          name: 'AddStore',
+          component: () => import("./components/StoreManagement/store/addStore.vue")
         }
       ]
     },
@@ -106,11 +106,6 @@ export default new Router({
           name: 'AddPetMaster',
           component: () => import("./components/PlatformManagement/petMaster/addPetMaster.vue")
         },
-        {
-          path: 'store',
-          name: 'Store',
-          component: () => import("./components/PlatformManagement/store/store.vue")
-        }
       ]
     },
   ]
