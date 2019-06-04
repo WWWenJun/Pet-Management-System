@@ -79,12 +79,7 @@ export default {
     },
     methods:{
 login(){
-        axios({
-                method:"post",
-                url:"/storeusers/isLogin",
-            }).then((msg)=>{
-                console.log(msg)
-            })
+
       }
     }
 };

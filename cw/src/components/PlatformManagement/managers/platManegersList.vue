@@ -189,6 +189,8 @@ export default {
         url: "/managers/getSlurManagers",
         params: { type: this.type, value: this.value }
       }).then(res => {
+        console.log(res);
+        
         this.setManagersData(res.data);
       });
     },
