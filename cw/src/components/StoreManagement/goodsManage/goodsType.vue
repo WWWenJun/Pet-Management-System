@@ -1,10 +1,10 @@
 <template>
 <div style="width: 100%;height:85%;">
-          <Pie  v-bind:pie="goodsMethodData" id="main" style="width: 100%;height:80%;">
+          <Pie  v-bind:pie="goodsTypeData" id="main" style="width: 100%;height:80%;">
           </Pie>
         <el-button  @click="centerDialogVisible = true" type="primary">增加<i class="el-icon-upload el-icon--right"></i></el-button>
         <el-dialog
-  title="增加烹饪方法"
+  title="增加种类"
   :visible.sync="centerDialogVisible"
   width="30%"
   center>
@@ -27,12 +27,7 @@ const {mapActions,mapState}=createNamespacedHelpers('Goods')
 import Pie from './pie.vue'
 export default {
     computed:{
-        ...mapState(['goodsMethodData'])
-    },
-    watch:{
-        goodsMethodData(){
-            // this.getGoodsMethod()            
-        }
+        ...mapState(['goodsTypeData'])
     },
     components:{
         Pie
@@ -44,15 +39,15 @@ export default {
     }
   },
   methods: {
-      ...mapActions(['addGoodsMethod','getGoodsMethod']),
+      ...mapActions(['addGoodsType','getGoodsType']),
       check(){
             this.centerDialogVisible=false
-            this.addGoodsMethod(this.input)
-            this.getGoodsMethod()
+            this.addGoodsType(this.input)
+            this.getGoodsType()
       },
   },
     mounted(){
-        this.getGoodsMethod();
+        this.getGoodsType();
   },
 }
 </script>

@@ -2,7 +2,7 @@
   <div>
     <el-container>
       <el-header>门店系统</el-header>
-      <el-container>
+      <el-container style="heighe:100%">
         <el-aside width="200px">
           <el-row>
             <el-col :span="12" style="width: 100%; height:500px;">
@@ -15,7 +15,7 @@
                 :router="true"
               >
                 
-                <el-submenu index="2">
+                <el-submenu index="1">
                   <template slot="title">
                     <i class="el-icon-school"></i>
                     <span>门店申请</span>
@@ -35,12 +35,12 @@
                   <template slot="title">
                     <i class="el-icon-shopping-cart-2"></i>
                     <span>商品管理</span>
-                    </template>
-                  <el-menu-item index="">商品</el-menu-item>
+                  </template>
+                  <el-menu-item index="/storeSystem/goods">商品</el-menu-item>
                   <el-menu-item index="/storeSystem/goodsMethod">品类</el-menu-item>
-                  <el-menu-item index="3-3">材质或者制作方法</el-menu-item>
-                  <el-menu-item index="3-4">适用规格</el-menu-item>
-                  <el-menu-item index="3-5">专属规格</el-menu-item>         
+                  <el-menu-item index="/storeSystem/goodsType">材质或者制作方法</el-menu-item>
+                  <el-menu-item index="/storeSystem/goodsOne">适用规格</el-menu-item>
+                  <el-menu-item index="/storeSystem/goodsSuit">专属规格</el-menu-item>         
                 </el-submenu>
                 <el-submenu index="4">
                   <template slot="title">
@@ -57,8 +57,6 @@
                   </template>
                   <el-menu-item index="/storeSystem/clerksList">店员列表</el-menu-item>
                   <el-menu-item index="/storeSystem/addClerks">增加店员</el-menu-item>
-                  
-    
                 </el-submenu>
               </el-menu>
             </el-col>
@@ -73,7 +71,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+
+};
 </script>
 
 <style scope>
@@ -86,7 +86,7 @@ export default {};
   /* text-align: center; */
   line-height: 50px;
   text-align: center;
-  line-height: 160px;
+  /* line-height: 160px; */
   padding: 0;
 }
 </style>

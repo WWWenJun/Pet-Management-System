@@ -74,7 +74,7 @@
         </el-table-column>
         <el-table-column label="操作" width="180">
           <template slot-scope="scope">
-            <el-button size="mini" @click="dialogVisible = true">编辑</el-button>
+            <el-button size="mini" @click="dialogVisible = true,storeid=scope.row._id">编辑</el-button>
             <el-dialog
               title="提示"
               :visible.sync="dialogVisible"
@@ -88,7 +88,7 @@
               </el-radio-group>
               <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">取 消</el-button>
-                <el-button type="primary" @click="updateStore(scope.row._id)">确 定</el-button>
+                <el-button type="primary" @click="updateStore">确 定</el-button>
               </span>
             </el-dialog>
             <el-button size="mini" type="danger" @click="deleteStore(scope.row._id)">删除</el-button>
@@ -98,10 +98,10 @@
     </template>
     <div class="block">
       <el-pagination
-        :page-sizes="[10, 20, 30, 40]"
-        :page-size="100"
+        :page-sizes="[5, 20, 30, 40]"
+        :page-size="5"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="10"
+        :total="total"
       ></el-pagination>
     </div>
   </div>
@@ -118,11 +118,15 @@ export default {
       select: "",
       tableData: [],
       dialogVisible: false,
-      radio: ""
+      radio: "",
+      storeid: "",
+      total: 0,
+      pagesize:5
     };
   },
   created() {
-    this.getStore();
+    // this.getStore();
+    this.getStoreByPage();
   },
   methods: {
     getStore() {
@@ -131,6 +135,7 @@ export default {
         url: "/store/getStore"
       }).then(res => {
         this.tableData = res.data;
+        this.total = res.data.length;
         console.log(res.data);
       });
     },
@@ -145,17 +150,17 @@ export default {
         this.getStore();
       });
     },
-    updateStore(id) {
-      console.log(id);
+    updateStore() {
       axios({
         method: "post",
         url: "/store/updateStore",
         data: {
-          _id:id,
-          state:this.radio
+          _id: this.storeid,
+          state: this.radio
         }
       }).then(res => {
         console.log(res);
+        this.getStore();
       });
       this.dialogVisible = false;
     },
@@ -165,6 +170,18 @@ export default {
           done();
         })
         .catch(_ => {});
+    },
+    getStoreByPage() {
+      axios({
+        method: "get",
+        url: "/store/getStoreByPage",
+        params: {
+          currentPage: 1,
+          pageSize:this.pagesize
+        }
+      }).then(res => {
+        console.log(res);
+      });
     }
   }
 };
