@@ -36,7 +36,6 @@
                     <i class="el-icon-shopping-cart-2"></i>
                     <span>商品管理</span>
                   </template>
-                  <el-menu-item index="">商品</el-menu-item>
                   <el-menu-item index="/storeSystem/goods">商品</el-menu-item>
                   <el-menu-item index="/storeSystem/goodsMethod">品类</el-menu-item>
                   <el-menu-item index="/storeSystem/goodsType">材质或者制作方法</el-menu-item>
