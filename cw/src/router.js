@@ -16,7 +16,7 @@ export default new Router({
     },
     // 门店路径
     {
-      path: '/storeSystem/:phone',
+      path: '/storeSystem',
       name: 'StoreSystem',
       component: () => import('./views/storeSystem.vue'),
       children: [
@@ -54,7 +54,7 @@ export default new Router({
           path: 'addStore',
           name: 'AddStore',
           component: () => import("./components/StoreManagement/store/addStore.vue")
-        }
+        },
       ]
     },
     // 平台路径

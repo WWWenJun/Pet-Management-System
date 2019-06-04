@@ -80,7 +80,7 @@ export default {
       console.log(res);
       if (res.data==true&&this.ruleForm.usephone!="") {
           alert("登录成功");
-          this.$router.push({ path: "/storeSystem/123" });
+          this.$router.push({ path: "/storeSystem" });
         } else {
           alert("输入错误,请重新输入");
         }
