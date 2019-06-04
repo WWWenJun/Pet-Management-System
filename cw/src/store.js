@@ -11,7 +11,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    services,clerks,managers,    supplier,
+    services,clerks,managers,supplier,
     petMaster
   }
 })

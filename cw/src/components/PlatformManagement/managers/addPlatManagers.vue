@@ -1,5 +1,5 @@
 <template>
-   <div style="">
+   <div style="line-height: 50px;margin-left:30px;text-align:left">
             <h1>增加管理员</h1>
           <span style="margin-left:16px">登录名: </span><el-input style="width:200px;" suffix-icon="el-icon-user-solid" v-model="userName" placeholder="请输入姓名"></el-input><br> 
             <span style="margin-left:32px">密码: </span><el-input style="width:200px" v-model="passWord" suffix-icon="el-icon-lock" show-password placeholder="请输入密码"></el-input><br>
