@@ -18,7 +18,7 @@ const petMasterRouter = require("./routes/petMaster.js");
 const serviesRouter = require("./routes/servies.js");
 const managersRouter = require("./routes/managers.js");
 const clerksRouter = require("./routes/clerks.js");
-const storeRouter=require("./routes/store")
+const storeRouter=require("./routes/store");
 
 
 require("./dao/database");
@@ -54,7 +54,7 @@ app.use('/goodsMethod', goodsMethodRouter);
 app.use('/goodsOne', goodsOneRouter);
 app.use('/goodsSuit', goodsSuitRouter);
 app.use('/goodsType', goodsTypeRouter);
-app.use("/storeusers",storesUsersRouter)
+app.use("/storeusers",storesUsersRouter);
 app.use('/servies', serviesRouter);
 app.use('/managers', managersRouter);
 app.use('/clerks', clerksRouter);

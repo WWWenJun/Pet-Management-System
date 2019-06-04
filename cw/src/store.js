@@ -18,6 +18,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
+    // services,clerks,managers,supplier,
     Goods,
     services, clerks, managers, supplier,
     petMaster

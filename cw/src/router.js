@@ -16,10 +16,30 @@ export default new Router({
     },
     // 门店路径
     {
-      path: '/storeSystem',
+      path: '/storeSystem/:tel',
       name: 'StoreSystem',
       component: () => import('./views/storeSystem.vue'),
       children: [
+        {
+          path: 'addClerks',
+          name: 'addClerks',
+          component: () => import("./components/StoreManagement/clerk/addClerk.vue")
+        },
+        {
+          path: 'clerksList',
+          name: 'clerksList',
+          component: () => import("./components/StoreManagement/clerk/clerkList.vue")
+        },
+        {
+          path: 'addServies',
+          name: 'addServies',
+          component: () => import("./components/StoreManagement/service/addService.vue")
+        },
+        {
+          path: 'serviesList',
+          name: 'serviesList',
+          component: () => import("./components/StoreManagement/service/serviesList.vue")
+        },
         {
           path: 'goods',
           name: 'goods',
@@ -54,7 +74,7 @@ export default new Router({
           path: 'addStore',
           name: 'AddStore',
           component: () => import("./components/StoreManagement/store/addStore.vue")
-        }
+        },
       ]
     },
     // 平台路径
@@ -105,7 +125,7 @@ export default new Router({
           path: 'addPetMaster',
           name: 'AddPetMaster',
           component: () => import("./components/PlatformManagement/petMaster/addPetMaster.vue")
-        },
+        }
       ]
     },
   ]

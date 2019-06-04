@@ -27,7 +27,8 @@
                     <span>用户管理</span>
                   </template>
                   <el-menu-item index="/platformSystem/managersList">平台管理员列表</el-menu-item>
-                  <el-menu-item index="/platformSystem/addManagers">增加平台管理员</el-menu-item>
+                  <el-menu-item index="/platformSystem/storeManagersList">门店管理员列表</el-menu-item>
+                  <el-menu-item index="/platformSystem/addManagers">增加管理员</el-menu-item>
                 </el-submenu>
           <el-menu-item index="/platformSystem/store">门店管理</el-menu-item>
         </el-menu>

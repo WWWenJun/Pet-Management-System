@@ -1,5 +1,5 @@
 <template>
-   <div style="">
+   <div style="line-height: 50px;margin-left:30px;text-align:left">
             <h1>增加服务</h1>
           <span style="margin-left:32px">名称: </span><el-input style="width:200px;" v-model="name" placeholder="请输入名称"></el-input><br> 
           <span style="margin-left:32px">品类: </span> <el-input style="width:200px" v-model="kind" placeholder="请输入品类"></el-input>
@@ -63,4 +63,8 @@ export default {
 </script>
 
 <style>
+.add{
+  line-height: 50px;
+  text-align: left
+}
 </style>

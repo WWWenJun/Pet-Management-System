@@ -15,7 +15,7 @@
                 :router="true"
               >
                 
-                <el-submenu index="2">
+                <el-submenu index="1">
                   <template slot="title">
                     <i class="el-icon-school"></i>
                     <span>门店申请</span>
@@ -71,7 +71,23 @@
 </template>
 
 <script>
-export default {};
+import axios from 'axios'
+
+export default {
+    created(){
+        this.login()
+    },
+    methods:{
+login(){
+        axios({
+                method:"post",
+                url:"/storeusers/isLogin",
+            }).then((msg)=>{
+                console.log(msg)
+            })
+      }
+    }
+};
 </script>
 
 <style scope>
