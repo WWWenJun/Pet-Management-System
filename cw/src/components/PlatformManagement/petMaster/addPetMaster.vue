@@ -109,6 +109,7 @@ h3 {
   text-align: center;
 }
 
+
 .avatarForm {
   height: 180px;
 }

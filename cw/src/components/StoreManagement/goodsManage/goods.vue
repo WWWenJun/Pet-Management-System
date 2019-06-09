@@ -1,6 +1,20 @@
 <template>
 <div>
+  <template class="headTop">
     <el-button type="primary" @click="dialogFormVisible = true" plain icon="el-icon-edit">增加商品</el-button>
+    <template>
+          <el-select  v-model="type" style="width:120px;" placeholder="请选择">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+      </el-select>
+            <el-input suffix-icon="el-icon-search" v-model="value" @change="getManagers" style="width:250px;margin-left:20px"></el-input>
+    </template>
+  </template>
+            
 <el-dialog title="新增商品" :visible.sync="dialogFormVisible">
   <el-form >
     <el-form-item label="商品名称" >
@@ -46,7 +60,7 @@
     </el-form-item>
                 <el-form-item label="供应商" >
       <el-select  v-model="newGoods.supplierId" placeholder="选择供应商">
-        <el-option  v-for=" item in goodsSuitData" :key="item._id" :label="item.name" :value="item._id"></el-option>
+        <el-option  v-for=" item in supplier" :key="item._id" :label="item.name" :value="item._id"></el-option>
       </el-select>
     </el-form-item>
             <el-form-item label="商品特色" >
@@ -84,7 +98,7 @@
     </el-form-item>
     <el-form-item label="商品种类" >
       <el-select v-model="changeGoods.typeId.name"  placeholder="输入商品种类">
-        <el-option  v-for=" item in goodsTypeData" :key="item._id" :label="item.name" :value="item._id"></el-option>
+        <el-option  v-for=" item in goodsTypeData" :key="item._id" :label="item.name" :value="item.name"></el-option>
       </el-select>
     </el-form-item>
         <el-form-item label="制作方法" >
@@ -122,7 +136,7 @@
     </el-form-item>
                 <el-form-item label="供应商" >
       <el-select  v-model="changeGoods.supplierId" placeholder="选择供应商">
-        <el-option  v-for=" item in goodsSuitData" :key="item._id" :label="item.name" :value="item._id"></el-option>
+        <el-option  v-for=" item in supplier" :key="item._id" :label="item.name" :value="item._id"></el-option>
       </el-select>
     </el-form-item>
             <el-form-item label="商品特色" >
@@ -193,7 +207,7 @@
             <span>{{ props.row.quality }}</span>
           </el-form-item>
                     <el-form-item label="供应商">
-            <span>{{ props.row.supplierId }}</span>
+            <span>{{ props.row.supplierId.name }}</span>
           </el-form-item>
                     <el-form-item label="商品特色">
             <span>{{ props.row.item }}</span>
@@ -249,17 +263,22 @@
 import {createNamespacedHelpers} from 'vuex'
 const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
   export default {
+    created(){
+      
+      },
         mounted(){
+        this.changeUserId();
+        this.setSuppliers()
         this.getGoodsOne();
         this.getGoodsMethod();
         this.getGoodsType();
         this.getGoodsSuit();
-        this.getGoods()
   },
+  
         computed:{
-        ...mapState(['goodsOneData','goodsMethodData',
+        ...mapState(['goodsOneData','goodsMethodData','supplier',
         'goodsSuitData','goodsTypeData','goodsData','currentPage',
-        'pageSize','totalPages','totalCount']),
+        'pageSize','totalPages','totalCount','userId','type','value']),
                 currentPage: {
             get: mapState(['currentPage']).currentPage,
             set: mapMutations(['setCurrentPage']).setCurrentPage
@@ -267,31 +286,50 @@ const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
         pageSize: {
             get: mapState(['pageSize']).pageSize,
             set: mapMutations(['setPageSize']).setPageSize
-        }
+        },
+        type: {
+            get: mapState(['type']).type,
+            set: mapMutations(['setType']).setType
+        },
+                value: {
+            get: mapState(['value']).value,
+            set: mapMutations(['setValue']).setValue
+        },
+
     },
       methods:{
-              ...mapActions(['getGoodsOne','getGoodsMethod','getGoodsType','getGoodsSuit','addGood','changeOneGood',"getGoods",'deleteGoods']),
+              ...mapActions(['getGoodsOne','changeUserId','setSuppliers','getManager','getGoodsMethod','getGoodsType','getGoodsSuit','addGood','changeOneGood',"getGoods",'deleteGoods']),
   handleAvatarSuccess(res, file) {
         this.imageUrl = URL.createObjectURL(file.raw);
         console.log(URL.createObjectURL(file.raw));
         
       },
+      getManagers(){
+        this.getManager()
+      },
       changeGood(){
         this.changegood=false
+        this.changeOneGood(this.changeGoods)      
+      this.changeUserId();
+          
       },
       deletes(data){
         this.deleteGoods(data)
-        this.getGoods()               
+      this.changeUserId();
+        
+        // this.getGoods(this.userId)               
       },
       change(data){
         this.changegood=true
-        this.changeGoods=data
-        this.changeOneGood(data)
+        this.changeGoods={...data,userId:this.userId}
       },
       addGoods(){
         this.dialogFormVisible=false,
+        this.newGoods.userId=this.userId
        this.addGood(this.newGoods)
-        this.getGoods()       
+      this.changeUserId();
+       
+        // this.getGoods(this.userId)       
       },
       handleAvatarSuccess(res,file){
         this.newGoods.img=res.data.url
@@ -322,6 +360,32 @@ const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
       },
     data() {
       return {
+        options: [
+        {
+          value: "name",
+          label: "商品名称"
+        },
+        {
+          value: "typeId",
+          label: "商品类型"
+        },
+        {
+          value: "methodId",
+          label: "制造方法"
+        },
+        {
+          value: "suitId",
+          label: "适合规格"
+        },
+        {
+          value: "oneId",
+          label: "专用规格"
+        },
+        {
+          value: "data",
+          label: "生产日期"
+        }
+      ],
         newGoods:{
             name:'',
             typeId:'',
@@ -338,7 +402,8 @@ const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
             item:'',
             price:'',
             img:'',
-            storeId:''
+            storeId:'',
+            userId:''
       },
         dialogFormVisible:false,
         changeGoods:{
@@ -414,5 +479,8 @@ const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
   #goodimg{
     width: 100px;
     height: 100px;
+  }
+  .headTop{
+    justify-content: space-between
   }
 </style>

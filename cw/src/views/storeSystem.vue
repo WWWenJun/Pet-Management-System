@@ -73,19 +73,6 @@
 import axios from "axios";
 
 export default {
-  created() {
-    this.login();
-  },
-  methods: {
-    login() {
-      axios({
-        method: "post",
-        url: "/storeusers/isLogin"
-      }).then(msg => {
-        console.log(msg);
-      });
-    }
-  }
 };
 </script>
 

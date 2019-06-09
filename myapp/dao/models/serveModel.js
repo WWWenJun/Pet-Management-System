@@ -6,6 +6,10 @@ const serveSchema = new mongoose.Schema({
     storeId: {//所属门店
         type: mongoose.Schema.Types.ObjectId,
         ref: "storeModel"
+    }, 
+    userId: {//所属管理员
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "storeusersModel"
     },
     kind:String,//服务类别
     time:String,//排期
