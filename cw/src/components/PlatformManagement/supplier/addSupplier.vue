@@ -44,23 +44,20 @@ export default {
 <style>
 
 h3{
-  height:100px;
+  height:60px;
   width:200px;
   margin: auto;
-  font-size: 30px;
-  color:gold
+ 
   }
 .el-form-item{
   width:300px;
   height:80px;
-  margin:auto
+  margin:auto;
 }
 .el-input {
-  height: 30px;
   width:300px; 
 }
 .el-button{
-  background-color: gold;
   border: none;
 }
 </style>

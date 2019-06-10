@@ -50,6 +50,7 @@ export default {
             const {currentPage, pageSize,type,value} = context.state;
             const data = await fetch(`/clerks/getClerksByPage?currentPage=${currentPage}&pageSize=${pageSize}&type=${type}&value=${value}`)
             .then(res => res.json());
+            console.log(data);
             context.commit("getClerksByPage", data)
         }
     }
