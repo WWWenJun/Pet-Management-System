@@ -14,9 +14,13 @@ export default{
         userId:'',
         supplier:[],
         type:'',
-        value:''
+        value:'',
+        store:[]
     },
     mutations:{
+        getStore(state,payload){
+            state.store=payload
+        },
         setSupplier(state,payload){
             state.supplier=payload
         },
@@ -101,6 +105,8 @@ export default{
             })
         },
         changeUserId(context,payload){
+            console.log(123);
+            
             axios({
                 method:"post",
                 url:"/storeusers/isLogin",
@@ -116,7 +122,17 @@ export default{
                     }
                 }).then((msg)=>{
                     context.commit("getgoodsData", msg.data)
+                }),
+                axios({
+                    method:"get",
+                    url:"/store/getStore",
+                    params:{
+                        userId:msg.data                        
+                    }
+                }).then((msg)=>{
+                    context.commit("getStore", msg.data)
                 })
+
             })
         },
         addGoodsType(context,payload){
