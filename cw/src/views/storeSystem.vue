@@ -71,12 +71,13 @@
 
 <script>
 import axios from "axios";
-
-export default {
-};
+export default {};
 </script>
 
 <style scope>
+html{
+  background-color: #969696
+}
 .aside {
   width: 400px;
 }
@@ -88,5 +89,13 @@ export default {
   text-align: center;
   /* line-height: 160px; */
   padding: 0;
+}
+.el-header{
+  background-color: #333;
+  color:rgb(53, 30, 30);
+  font-size: 32px;
+  text-align: center;
+  font-weight: bolder;
+  text-shadow:1px 2px 2px rgb(226, 223, 26);
 }
 </style>
