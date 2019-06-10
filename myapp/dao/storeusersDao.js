@@ -4,7 +4,9 @@ module.exports.login = async function (user) {//登录判断
     return await mongoose.model("storeusersModel").find(user);
 }
 
-module.exports.isUsers = async function (users) {//用于验证用户是否被注册
+module.exports.isUsers = async function (users) {
+    console.log(users);
+    //用于验证用户是否被注册
     return await mongoose.model("storeusersModel").find(users);
 }
 

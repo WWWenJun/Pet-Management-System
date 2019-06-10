@@ -10,6 +10,7 @@ module.exports.changeManagers = async Managerses => {
 
 module.exports.getManagers = async () => {
     return await getManagers();
+
 }
 module.exports.getSlurManagers = async (data) => {
     return await getSlurManagers(data);
