@@ -11,20 +11,37 @@ export default{
         pageSize: 5,
         totalPages: 0,
         totalCount: 0,
+        userId:'',
+        supplier:[],
+        type:'',
+        value:'',
+        store:[]
     },
     mutations:{
+        getStore(state,payload){
+            state.store=payload
+        },
+        setSupplier(state,payload){
+            state.supplier=payload
+        },
+        setUserId(state,payload){
+            state.userId=payload
+        },
         setPageSize(state, payload) {
             state.pageSize = payload;
+        },
+        setType(state, payload){
+            state.type=payload
+        },
+        setValue(state, payload){
+            state.value=payload
         },
         setCurrentPage(state,payload){
             state.currentPage = payload;            
         },
         setNextPage(state) {
-            console.log(state);
-            
             if(state.currentPage < state.totalPages) {
                 console.log(state.currentPage);
-                
                 state.currentPage = state.currentPage - 0 + 1;
             }
         },
@@ -48,24 +65,74 @@ export default{
             state.goodsMethodData=[...payload]
         },
         getgoodsData(state,payload){
-            console.log(payload);
-            
             state.goodsData=null
             state.goodsData=payload.goodsData
             state.totalCount=payload.totalCount
             state.totalPages=payload.totalPages
-            console.log(state.goodsData);
-            
         }
     },
     actions:{
+        getManager(context,payload){
+            axios({
+                method:"post",
+                url:"/goods/searchGoods",
+                data:{
+                    type: context.state.type, value: context.state.value,
+                    currentPage: context.state.currentPage,
+                    pageSize: context.state.pageSize,
+                    userId:context.state.userId
+                }
+            }).then((msg)=>{
+                context.commit("getgoodsData", msg.data)                
+            })
+        },
+
         changeOneGood(context,payload){
             axios({
                 method:"post",
-                url:"/goods/changeOneGood",
+                url:"/goods/changeGoods",
                 data:payload
             }).then((msg)=>{
                 console.log(msg)
+            })
+        },
+        setSuppliers(context,payload){
+            axios({
+                method:"get",
+                url:"/supplier/getSupplierByPage",
+            }).then((msg)=>{
+                context.commit("setSupplier", msg.data.supplierData)
+            })
+        },
+        changeUserId(context,payload){
+            console.log(123);
+            
+            axios({
+                method:"post",
+                url:"/storeusers/isLogin",
+            }).then((msg)=>{
+                context.commit("setUserId", msg.data)
+                axios({
+                    method:"get",
+                    url:"/goods/getGoods",
+                    params:{
+                        currentPage: context.state.currentPage,
+                        pageSize: context.state.pageSize,
+                        userId:msg.data
+                    }
+                }).then((msg)=>{
+                    context.commit("getgoodsData", msg.data)
+                }),
+                axios({
+                    method:"get",
+                    url:"/store/getStore",
+                    params:{
+                        userId:msg.data                        
+                    }
+                }).then((msg)=>{
+                    context.commit("getStore", msg.data)
+                })
+
             })
         },
         addGoodsType(context,payload){
@@ -119,18 +186,17 @@ export default{
             })
         },
             getGoods(context,payload){
-                console.log(context);
-                
-            axios({
-                method:"get",
-                url:"/goods/getGoods",
-                params:{
-                    currentPage: context.state.currentPage,
-                    pageSize: context.state.pageSize,
-                }
-            }).then((msg)=>{
-                context.commit("getgoodsData", msg.data)
-            })
+                axios({
+                    method:"get",
+                    url:"/goods/getGoods",
+                    params:{
+                        currentPage: context.state.currentPage,
+                        pageSize: context.state.pageSize,
+                        userId:msg.data
+                    }
+                }).then((msg)=>{
+                    context.commit("getgoodsData", msg.data)
+                })
         },
         getGoodsSuit(context,payload){
             axios({

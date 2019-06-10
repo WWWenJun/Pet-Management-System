@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="line-height: 50px;margin-left:30px;text-align:left">
       <el-select  v-model="type" style="width:120px;" placeholder="请选择">
           <el-option
             v-for="item in options"
@@ -189,6 +189,8 @@ export default {
         url: "/managers/getSlurManagers",
         params: { type: this.type, value: this.value }
       }).then(res => {
+        console.log(res);
+        
         this.setManagersData(res.data);
       });
     },

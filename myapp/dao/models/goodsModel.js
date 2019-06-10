@@ -34,8 +34,12 @@ const goodsSchema = new mongoose.Schema({
     img:String,//特色
     storeId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"storeModel.js"        
-    }
+        ref:"storeModel"        
+    },
+    userId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'storeusersModel'       
+    },
 })
 // 创建学生数据模型
 mongoose.model("goodsModel", goodsSchema, "goods")

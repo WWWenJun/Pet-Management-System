@@ -12,13 +12,14 @@ const goodsMethodRouter = require("./routes/goodsMethod.js");
 const goodsOneRouter = require("./routes/goodsOne.js");
 const goodsSuitRouter = require("./routes/goodsSuit.js");
 const goodsTypeRouter = require("./routes/goodsType.js");
-const storesUsersRouter=require("./routes/storeusers.js");
-const managersRouter=require("./routes/managers");
-const clerksRouter=require("./routes/clerks");
+const storesUsersRouter=require("./routes/storeusers.js")
+const supplierRouter = require("./routes/supplier.js");
+const petMasterRouter = require("./routes/petMaster.js");
+const serviesRouter = require("./routes/servies.js");
+const managersRouter = require("./routes/managers.js");
+const clerksRouter = require("./routes/clerks.js");
 const storeRouter=require("./routes/store");
-const supplierRouter=require("./routes/supplier");
-const petMasterRouter=require("./routes/petMaster");
-const serviesRouter=require("./routes/servies");
+
 
 require("./dao/database");
 
@@ -53,7 +54,7 @@ app.use('/goodsMethod', goodsMethodRouter);
 app.use('/goodsOne', goodsOneRouter);
 app.use('/goodsSuit', goodsSuitRouter);
 app.use('/goodsType', goodsTypeRouter);
-app.use("/storeusers",storesUsersRouter)
+app.use("/storeusers",storesUsersRouter);
 app.use('/servies', serviesRouter);
 app.use('/managers', managersRouter);
 app.use('/clerks', clerksRouter);

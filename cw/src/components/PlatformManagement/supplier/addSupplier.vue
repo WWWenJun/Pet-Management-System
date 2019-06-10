@@ -42,17 +42,22 @@ export default {
 }
 </script>
 <style>
+
 h3{
-  height:100px;
-  text-align: center;
-}
+  height:60px;
+  width:200px;
+  margin: auto;
+ 
+  }
 .el-form-item{
   width:300px;
   height:80px;
-  margin:auto
+  margin:auto;
 }
 .el-input {
-  height: 30px;
-  width:300px;
+  width:300px; 
+}
+.el-button{
+  border: none;
 }
 </style>

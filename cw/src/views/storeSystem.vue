@@ -14,8 +14,7 @@
                 active-text-color="#ffd04b"
                 :router="true"
               >
-                
-                <el-submenu index="2">
+                <el-submenu index="1">
                   <template slot="title">
                     <i class="el-icon-school"></i>
                     <span>门店申请</span>
@@ -40,7 +39,7 @@
                   <el-menu-item index="/storeSystem/goodsMethod">品类</el-menu-item>
                   <el-menu-item index="/storeSystem/goodsType">材质或者制作方法</el-menu-item>
                   <el-menu-item index="/storeSystem/goodsOne">适用规格</el-menu-item>
-                  <el-menu-item index="/storeSystem/goodsSuit">专属规格</el-menu-item>         
+                  <el-menu-item index="/storeSystem/goodsSuit">专属规格</el-menu-item>
                 </el-submenu>
                 <el-submenu index="4">
                   <template slot="title">
@@ -71,10 +70,14 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {};
 </script>
 
 <style scope>
+html{
+  background-color: #969696
+}
 .aside {
   width: 400px;
 }
@@ -84,7 +87,15 @@ export default {};
   /* text-align: center; */
   line-height: 50px;
   text-align: center;
-  line-height: 160px;
+  /* line-height: 160px; */
   padding: 0;
+}
+.el-header{
+  background-color: #333;
+  color:rgb(53, 30, 30);
+  font-size: 32px;
+  text-align: center;
+  font-weight: bolder;
+  text-shadow:1px 2px 2px rgb(226, 223, 26);
 }
 </style>

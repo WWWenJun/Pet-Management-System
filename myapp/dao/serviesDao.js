@@ -9,8 +9,8 @@ module.exports.addServies = async Servies => {
     return await mongoose.model("serveModel").create(Servies);
 }
 module.exports.changeServies = async Servies => {
-   const { _id,name, kind,timesuit,service,needTime,server,price,} = Servies;
-    return await mongoose.model("serveModel").update({ _id }, {name, kind,timesuit,service,needTime,server,price,});
+   const { _id} = Servies;
+    return await mongoose.model("serveModel").update({ _id }, Servies);
 }
 module.exports.getServies = async () => {//查找，关联
     return await mongoose.model("serveModel").find().populate("storeId") ;
@@ -22,7 +22,7 @@ module.exports.getServiesByPage = async page => {
     const totalCount = await mongoose.model("serveModel").find({[page.type]:{$regex:page.value,$options:'$i'}}).countDocuments();
     const totalPage = Math.ceil(totalCount / page.pageSize);
     const serviesData = await mongoose.model("serveModel")
-        .find({[page.type]:{$regex:page.value,$options:'$i'}})
+        .find({[page.type]:{$regex:page.value,$options:'$i'}}).populate("storeId")
         .skip(page.pageSize * (page.currentPage - 1))
         .limit(page.pageSize - 0);
     return { totalCount, totalPage, serviesData, currentPage: page.currentPage, pageSize: page.pageSize }

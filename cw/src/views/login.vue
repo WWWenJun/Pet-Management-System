@@ -77,9 +77,9 @@ export default {
         }
       }).then(res => {
       console.log(res);
-      if (res.data==true&&this.ruleForm.usephone!="") {
+      if (res.data.length>0&&this.ruleForm.usephone!="") {
           alert("登录成功");
-          this.$router.push({ path: "/storeSystem" });
+          this.$router.push({ path: "/storeSystem/"});
         } else {
           alert("输入错误,请重新输入");
         }

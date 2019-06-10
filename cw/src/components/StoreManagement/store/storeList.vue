@@ -59,48 +59,48 @@
           </template>
         </el-table-column>
         <el-table-column label="操作" width="180">
-          <template slot-scope="scope">
+          <template slot-scope>
             <el-button size="mini">编辑</el-button>
-            <el-button size="mini" type="danger" @click="deleteStore(scope.row._id)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
     </template>
-    <div class="block">
-      <el-pagination
-        :page-sizes="[10, 20, 30, 40]"
-        :page-size="100"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="10"
-      ></el-pagination>
-    </div>
   </div>
 </template>
-
 <script>
 let axios = require("axios");
 export default {
   data() {
     return {
-      tableData: []
+      tableData: [],
+      userId: "5cf5c92c3c98a315a4e49086"
     };
   },
   created() {
-    this.getStore();
+    // this.getStore();
+    this.login();
   },
   methods: {
     getStore() {
       axios({
         method: "get",
-        url: "/store/getStore"
+        url: "/store/getStore",
+        params: {
+          userId: this.userId
+        }
       }).then(res => {
         this.tableData = res.data;
         console.log(res.data);
       });
     },
-    deleteStore(id){
-      console.log(id);
-      
+    login() {
+      axios({
+        method: "post",
+        url: "/storeusers/isLogin"
+      }).then(msg => {
+        this.userId = msg.data;
+        this.getStore();
+      });
     }
   }
 };

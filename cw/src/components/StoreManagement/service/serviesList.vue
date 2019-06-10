@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="line-height: 50px;margin-left:30px;text-align:left">
       <el-select v-model="type" style="width:120px;" placeholder="请选择">
           <el-option
             v-for="item in options"
@@ -8,17 +8,16 @@
             :value="item.value">
           </el-option>
       </el-select>
-      <el-input v-model="value" @change="getService" style="width:250px;margin-left:20px"></el-input>
+      <el-input suffix-icon="el-icon-search" v-model="value" @change="getService" style="width:250px;margin-left:20px"></el-input>
       <!-- @row-click点击获取行 -->
         <el-table
       :data="serviesData"
       style="width: 100%;text-align:center"
       @row-click="getRowDatas"
       >
-
       <el-table-column prop="name" label="名称" width="100">
       </el-table-column>
-      <el-table-column prop="storeId" label="门店" width="100">
+      <el-table-column prop="storeId.name" label="门店" width="100">
       </el-table-column>
       <el-table-column prop="kind" label="服务类别" width="100">
       </el-table-column>
@@ -75,6 +74,11 @@
             <el-form-item label="价格" :label-width="formLabelWidth">
            <el-input v-model="form.price" autocomplete="off"></el-input>
             </el-form-item>
+             <el-form-item label="门店" :label-width="formLabelWidth">
+              <el-select style="width:200px" v-model="storeId" placeholder="选择门店">
+                <el-option  v-for=" item in stores" :key="item._id" :label="item.name" :value="item._id"></el-option>
+              </el-select>
+            </el-form-item>
             
         </el-form>
         <div slot="footer"  >
@@ -97,6 +101,9 @@ export default {
       // serviesData: this.$store.state.serviesData,
       // type: "",
       // value: "",
+       userId:'',
+        storeId:'',
+        stores: [],
       label: "",
       dialogFormVisible: false,
       index: "",
@@ -173,6 +180,27 @@ export default {
     }
   },
   methods: {
+    login() {//获取用户id
+      axios({
+        method: "post",
+        url: "/storeusers/isLogin"
+      }).then(msg => {
+        console.log(msg.data);
+        this.userId = msg.data;
+        this.getStores(msg.data);
+      });
+    },
+    getStores(data) {//获取用户的门店id
+      axios({
+        method: "get",
+        url: "/store/getStore",
+        params:{userId:data}
+      }).then(msg => {
+        console.log(msg);
+          this.stores=msg.data;
+          console.log(this.stores);
+      });
+    },
     ...mapMutations(["setServiesData"]),
     ...mapActions(["getServiesByPageAsync"]),
     getService() {//模糊查询
@@ -197,7 +225,7 @@ export default {
       axios({
         method: "post",
         url: "/servies/changeServies",
-        data: this.form
+        data: {...this.form,storeId:this.storeId}
       }).then(res => {
         this.getServiesByPageAsync();
       });
@@ -234,13 +262,16 @@ export default {
     }
   },
   mounted() {
+    this.login();
     this.getServiesByPageAsync();
   }
 };
 </script>
 
-<style>
-.el-main {
+<style  >
+
+
+.el-main { 
   background-color: wheat;
 }
 .el-table-column {
@@ -249,15 +280,15 @@ export default {
 .el-header {
   background-color: #b3c0d1;
   color: #333;
-  text-align: center;
-  line-height: 30px;
+  /* text-align: center; */
+  /* line-height: 30px; */
 }
 
 .el-aside {
   background-color: #d3dce6;
   color: #333;
-  text-align: center;
-  line-height: 200px;
+  /* text-align: center; */
+  /* line-height: 200px; */
 }
 </style>
 
