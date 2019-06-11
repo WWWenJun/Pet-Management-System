@@ -5,7 +5,7 @@
          label-position="left" 
          label-width="0px" 
          class="demo-ruleForm login-page" Opacity="0.5">
-            <h3 class="title">爱宠邦系统登录</h3>
+            <h3 class="title">爱宠邦平台用户系统登录</h3>
                <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" >
           <el-form-item label="手机号" prop="usephone">
             <el-input v-model="ruleForm.usephone"/>
@@ -64,8 +64,7 @@ export default {
         usephone: [{ validator: checkPhone, trigger: "blur" }]
       }
     };
-    //   password: "",
-    //   userphone: ""
+   
   },
   methods: {
     handleSubmit() {
@@ -81,7 +80,6 @@ export default {
       if (res.data.length>0&&this.ruleForm.usephone!="") {
           alert("登录成功");
           this.$router.push({ path: "/storeSystem/"});
-          this.$router.push({ path: "/storeSystem"});
         } else {
           alert("输入错误,请重新输入");
         }
@@ -92,17 +90,17 @@ export default {
 };
 </script>
 
-<style scoped>
-.body {
-  width: 100%;
-  height: 100%;
+<style scope>
+body {
+ margin: 0;
+ padding: 0;
+  background-image: url("../assets/01cb5e4f644b1964618cbe11a02c8867.jpg");
 }
 .login-container {
   width: 100%;
-  height: 650px;
-  background-image: url("../assets/44d55e8a8f863627a199bc0e1058fd28.jpg");
+  height:100%;
   background-size: 100% auto;
-  border: 1px solid;
+  /* border: 1px solid; */
  
 }
 .login-page {
@@ -113,7 +111,7 @@ export default {
   height: 350px;
   padding: 35px 35px 15px;
   background: #fff;
-  border: 1px solid #eaeaea;
+  /* border: 1px solid #eaeaea; */
   box-shadow: 0 0 25px #cac6c6;
   /* opacity: 0.7; */
 }

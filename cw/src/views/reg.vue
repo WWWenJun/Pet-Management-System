@@ -4,15 +4,15 @@
       class="regform"
       label-width="0" >
 
-      <h3>爱宠邦用户注册</h3>
+      <h3>爱宠邦平台用户注册</h3>
       <el-form-item>
-        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" >
+        <el-form :model="ruleForm"  @blur="isphone"  status-icon :rules="rules" ref="ruleForm" >
           <el-form-item label="手机号" prop="phone">
-            <el-input v-model.number="ruleForm.phone"/>
+            <el-input  @blur="isphone"  v-model.number="ruleForm.phone"/>
           </el-form-item>
         </el-form>
       </el-form-item>
-<el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm"  class="demo-ruleForm">
+<el-form :model="ruleForm" status-icon :rules="rules" id="messageInput" ref="ruleForm"  class="demo-ruleForm">
   <el-form-item label="密码" prop="pw">
     <el-input type="password" v-model="ruleForm.pw" autocomplete="off"></el-input>
   </el-form-item>
@@ -25,6 +25,8 @@
   </el-form-item>
         <hr>
         <router-link class="login" to="/login">已有账号，点击登录</router-link>
+        <router-link class="index" to="/">返回首页</router-link>
+        
       </el-form-item>
  </el-form>
     </el-form>
@@ -82,6 +84,22 @@ export default {
   },
   methods: {
     // ...
+    isphone(){
+axios({
+  method:'get',
+  url:'/storeusers/isUsers',
+  params:{
+     tel: this.ruleForm.phone,
+  }
+}).then(res=>{
+  console.log(res);
+  if(res.data){
+    alert("该账号已被注册");
+     this.ruleForm.phone='';
+  
+  }
+})
+    },
     submitForm() {
       axios({
         method: "post",
@@ -91,27 +109,29 @@ export default {
           tel: this.ruleForm.phone
         }
       }).then(res => {
-        if (this.ruleForm.phone && this.ruleForm.phone) {
+        if (res.data==true&&this.ruleForm.phone!="") {
           alert("注册成功");
           this.$router.push({ path: "/login" });
         } else {
           alert("输入错误");
+      
         }
 
       });
+     
       console.log(this.ruleForm.phone, this.ruleForm.pw);
     }
   }
 };
 </script>
 
-<style scoped>
-.body{
-  width: 100%;
-  height: 100%;
+<style scope >
+body{
+ padding:0;
+ margin: 0;
+   background-image: url("../assets/4e75bd22dd54c966f87c6a746682e34a.jpg");
 }
 .aaa{
-   background-image: url("../assets/4e75bd22dd54c966f87c6a746682e34a.jpg");
  width: 100%;
   height:650px;
 }
@@ -131,6 +151,9 @@ export default {
 }
 .login {
   float: right;
+  text-decoration: none;
+}
+.index {
   text-decoration: none;
 }
 </style>

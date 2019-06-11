@@ -62,9 +62,23 @@
     <div class="btn">
       <el-button type="success" round @click="addBtn">确认新增</el-button>
     </div>
+    <!-- <div id="container"></div>
+    <div id="myPageTop">
+      <table>
+        <tr>
+          <td>
+            <label>请输入关键字：</label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input id="tipinput">
+          </td>
+        </tr>
+      </table>
+    </div> -->
   </div>
 </template>
-
 <script>
 let axios = require("axios");
 export default {
@@ -83,11 +97,15 @@ export default {
       state: "", //门店状态
       imageUrl: "",
       imageUrlHead: "",
-      userId:''
+      userId: ""
     };
   },
-  created(){
+  created() {
     this.login();
+    // this.map();
+  },
+  mounted() {
+    // this.map();
   },
   methods: {
     addBtn() {
@@ -104,13 +122,13 @@ export default {
           phone: this.phone, //联系电话
           head: this.head, //头图
           item: this.item, //特色
-          scale: this.scale ,//佣金比例
-          userId:this.userId
+          scale: this.scale, //佣金比例
+          userId: this.userId
         }
       }).then(res => {
         if (res.data) {
           alert("新增成功");
-          this.$router.push({path:'/storeSystem/storeList'})
+          this.$router.push({ path: "/storeSystem/storeList" });
         }
       });
     },
@@ -140,6 +158,50 @@ export default {
       }).then(msg => {
         this.userId = msg.data;
         console.log(msg.data);
+      });
+    },
+    map() {
+      window.onLoad = function() {
+        var map = new AMap.Map("container");
+      };
+      var url =
+        "https://webapi.amap.com/maps?v=1.4.14&key=80ec123eea4dce943e1f78d45cf14734&callback=onLoad";
+      var jsapi = document.createElement("script");
+      jsapi.charset = "utf-8";
+      jsapi.src = url;
+      document.head.appendChild(jsapi);
+      // //地图加载
+      // var map = new AMap.Map("container", {
+      //   resizeEnable: true
+      // });
+      // //输入提示
+      // var autoOptions = {
+      //   input: "tipinput"
+      // };
+      // var auto = new AMap.Autocomplete(autoOptions);
+      // var placeSearch = new AMap.PlaceSearch({
+      //   map: map
+      // }); //构造地点查询类
+      // AMap.event.addListener(auto, "select", select); //注册监听，当选中某条记录时会触发
+      // function select(e) {
+      //   placeSearch.setCity(e.poi.adcode);
+      //   placeSearch.search(e.poi.name); //关键字查询查询
+      // }
+    },
+    selectmap() {
+      AMap.service(["AMap.PlaceSearch"], function() {
+        //构造地点查询类
+        // var placeSearch = new AMap.PlaceSearch({
+        //     pageSize: 5, // 单页显示结果条数
+        //     pageIndex: 1, // 页码
+        //     city: "010", // 兴趣点城市
+        //     citylimit: true,  //是否强制限制在设置的城市内搜索
+        //     map: map, // 展现结果的地图实例
+        //     panel: "panel", // 结果列表将在此容器中进行展示。
+        //     autoFitView: true // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
+        // });
+        //关键字查询
+        placeSearch.search("北京");
       });
     }
   }
@@ -174,5 +236,9 @@ export default {
   width: 178px;
   height: 178px;
   display: block;
+}
+#container {
+  width: 300px;
+  height: 180px;
 }
 </style>

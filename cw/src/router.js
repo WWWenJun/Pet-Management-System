@@ -10,10 +10,22 @@ export default new Router({
       component: () => import("./views/login.vue"),
     },
     {
-      path: '/reg',
-      name: 'reg',
-      component: () => import("./views/reg.vue"),
-    },
+      path:'/loginone',
+      name:'loginone',
+      component:()=>import("./views/loginone.vue"),
+     },
+   
+    {
+      path:'/',
+      name:'index',
+      component:()=>import("./views/index.vue"),
+     },
+    {
+      path:'/reg',
+      name:'reg',
+      component:()=>import("./views/reg.vue"),
+     },
+
     // 门店路径
     {
       path: '/storeSystem',

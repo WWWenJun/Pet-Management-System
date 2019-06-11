@@ -13,6 +13,7 @@ module.exports.getGoods = async (page) => {
         .populate("suitId")
         .populate('oneId')
         .populate('supplierId')
+        .populate('storeId')
         .skip(page.pageSize * (page.currentPage - 1))
         .limit(page.pageSize - 0);
     return { totalCount, totalPage, goodsData, currentPage: page.currentPage, pageSize: page.pageSize }
@@ -28,8 +29,6 @@ module.exports.deleteGoods = async (data) => {
     return await mongoose.model("goodsModel").deleteOne(data);
 }
 module.exports.changeGoods = async page => {
-    console.log(page);
-    
     const { _id,name,typeId,methodId,suitId,oneId,pack,flavor,special,place,data,quality,supplierId,item 
         ,price,img,storeId,userId
     } = page;
@@ -39,8 +38,19 @@ module.exports.changeGoods = async page => {
 module.exports.searchGoods=async (page)=>{
     const{type,value}=page;
     let totalCount;
+    console.log(type);
+    
+    if(type==="_id"){
+    console.log(type);
+    
     const goodsData = await mongoose.model("goodsModel")
-    .find({[type]:{$regex:value,$options:"$i"}})
+    .find({[type]:value})
+    .populate("typeId")
+        .populate("methodId")
+        .populate("suitId")
+        .populate('oneId')
+        .populate('supplierId')
+        .populate('storeId')
     .skip(page.pageSize * (page.currentPage - 1))
     .limit(page.pageSize - 0);
     if(value == ''){
@@ -49,7 +59,25 @@ module.exports.searchGoods=async (page)=>{
         totalCount = goodsData.length;
     }
     const totalPage = Math.ceil(totalCount / page.pageSize -0);
-    console.log(goodsData);
-    
     return { totalCount, totalPage, goodsData, currentPage: page.currentPage, pageSize: page.pageSize }
+    }
+    else{
+        const goodsData = await mongoose.model("goodsModel")
+        .find({[type]:{$regex:value,$options:"$i"}})
+        .populate("typeId")
+            .populate("methodId")
+            .populate("suitId")
+            .populate('oneId')
+            .populate('supplierId')
+            .populate('storeId')
+        .skip(page.pageSize * (page.currentPage - 1))
+        .limit(page.pageSize - 0);
+        if(value == ''){
+            totalCount = await mongoose.model("goodsModel").countDocuments()//获取总条数
+        }else{
+            totalCount = goodsData.length;
+        }
+        const totalPage = Math.ceil(totalCount / page.pageSize -0);
+        return { totalCount, totalPage, goodsData, currentPage: page.currentPage, pageSize: page.pageSize }
+    }
   }

@@ -53,7 +53,12 @@
       <el-input v-model="newGoods.place" autocomplete="off"></el-input>
     </el-form-item>
         <el-form-item label="日期" >
-      <el-input v-model="newGoods.data" autocomplete="off"></el-input>
+                          <el-date-picker
+                style="width:200px"
+                  v-model="newGoods.data"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
     </el-form-item>
         <el-form-item label="保质期" >
       <el-input v-model="newGoods.quality" autocomplete="off"></el-input>
@@ -82,7 +87,7 @@
     </el-form-item>
                     <el-form-item label="所属门店" >
       <el-select  v-model="newGoods.storeId" placeholder="请选择所属门店">
-        <el-option  v-for=" item in goodsSuitData" :key="item._id" :label="item.name" :value="item._id"></el-option>
+        <el-option  v-for=" item in store" :key="item._id" :label="item.name" :value="item._id"></el-option>
       </el-select>
     </el-form-item>
   </el-form>
@@ -97,22 +102,22 @@
       <el-input  v-model="changeGoods.name" autocomplete="off"></el-input>
     </el-form-item>
     <el-form-item label="商品种类" >
-      <el-select v-model="changeGoods.typeId.name"  placeholder="输入商品种类">
-        <el-option  v-for=" item in goodsTypeData" :key="item._id" :label="item.name" :value="item.name"></el-option>
+      <el-select v-model="changeGoods.typeId._id"  placeholder="输入商品种类">
+        <el-option  v-for=" item in goodsTypeData" :key="item._id" :label="item.name" :value="item._id"></el-option>
       </el-select>
     </el-form-item>
         <el-form-item label="制作方法" >
-      <el-select  v-model="changeGoods.methodId.name" placeholder="输入制作方法">
+      <el-select  v-model="changeGoods.methodId._id" placeholder="输入制作方法">
         <el-option  v-for=" item in goodsMethodData" :key="item._id" :label="item.name" :value="item._id"></el-option>
       </el-select>
     </el-form-item>
             <el-form-item label="适用规格" >
-      <el-select  v-model="changeGoods.suitId.name"  placeholder="输入适用规格">
+      <el-select  v-model="changeGoods.suitId._id"  placeholder="输入适用规格">
         <el-option  v-for=" item in goodsSuitData" :key="item._id" :label="item.name" :value="item._id"></el-option>
       </el-select>
     </el-form-item>
                 <el-form-item label="专属规格" >
-      <el-select v-model="changeGoods.oneId.name"  placeholder="输入专属规格">
+      <el-select v-model="changeGoods.oneId._id"  placeholder="输入专属规格">
         <el-option  v-for=" item in goodsOneData" :key="item._id" :label="item.name" :value="item._id"></el-option>
       </el-select>
     </el-form-item>
@@ -135,7 +140,7 @@
       <el-input v-model="changeGoods.quality" autocomplete="off"></el-input>
     </el-form-item>
                 <el-form-item label="供应商" >
-      <el-select  v-model="changeGoods.supplierId" placeholder="选择供应商">
+      <el-select  v-model="changeGoods.supplierId._id" placeholder="选择供应商">
         <el-option  v-for=" item in supplier" :key="item._id" :label="item.name" :value="item._id"></el-option>
       </el-select>
     </el-form-item>
@@ -157,8 +162,8 @@
 </el-upload>
     </el-form-item>
                     <el-form-item label="所属门店" >
-      <el-select  v-model="changeGoods.storeId" placeholder="请选择所属门店">
-        <el-option  v-for=" item in goodsSuitData" :key="item._id" :label="item.name" :value="item._id"></el-option>
+      <el-select  v-model="changeGoods.storeId._id" placeholder="请选择所属门店">
+        <el-option  v-for=" item in store" :key="item._id" :label="item.name" :value="item._id"></el-option>
       </el-select>
     </el-form-item>
   </el-form>
@@ -219,7 +224,7 @@
                       <img  id="goodimg" style="height:50px,width:50px" :src="props.row.img" alt="">
           </el-form-item>
                     <el-form-item label="所属门店">
-            <span>{{ props.row.storeId }}</span>
+            <span>{{ props.row.storeId.name }}</span>
           </el-form-item>
         </el-form>
       </template>
@@ -278,7 +283,7 @@ const {mapActions,mapState,mapMutations}=createNamespacedHelpers('Goods')
         computed:{
         ...mapState(['goodsOneData','goodsMethodData','supplier',
         'goodsSuitData','goodsTypeData','goodsData','currentPage',
-        'pageSize','totalPages','totalCount','userId','type','value']),
+        'pageSize','totalPages','totalCount','userId','type','value','store']),
                 currentPage: {
             get: mapState(['currentPage']).currentPage,
             set: mapMutations(['setCurrentPage']).setCurrentPage
