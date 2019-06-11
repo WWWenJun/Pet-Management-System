@@ -13,6 +13,9 @@
           <el-form-item label="营业地址">
             <el-input v-model="address"></el-input>
           </el-form-item>
+          <el-form-item label="定位">
+            <el-input v-model="local"></el-input>
+          </el-form-item>
           <el-form-item label="法人">
             <el-input v-model="person"></el-input>
           </el-form-item>

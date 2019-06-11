@@ -6,6 +6,17 @@ module.exports.addStore = async data => {
 module.exports.getStore = async (userId) => {
     return await mongoose.model("storeModel").find(userId);
 }
+module.exports.getStoreFont = async (store) => {
+    console.log('====================================');
+    console.log(store.address);
+    console.log('====================================');
+    const data = await mongoose.model("storeModel").find({address:{$regex:store.address,$options:"$i"}});
+    console.log('====================================');
+    console.log(data);
+    console.log('====================================');
+    return data;
+}
+
 module.exports.deleteStore = async storeId => {
     return await mongoose.model("storeModel").deleteOne(storeId);
 }

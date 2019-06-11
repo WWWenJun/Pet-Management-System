@@ -2,15 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 const { uploadFile } = require("../util/upload.js");
-const { addStore,getStore,deleteStore,updateStore,getStoreByPage,selectStore } = require("../service/storeService.js");
+const { addStore,getStore,deleteStore,updateStore,getStoreByPage,selectStore ,getStoreFont } = require("../service/storeService.js");
 
 router.post('/addStore', async function (req, res, next) {
     res.send(await addStore(req.body));
 });
 router.get('/getStore', async function (req, res, next) {
-    console.log(req.query);
-    
     res.send(await getStore(req.query));
+});
+
+router.get('/getStoreFont', async function (req, res, next) {
+    res.send(await getStoreFont(req.query));
 });
 
 router.post('/deleteStore', async (req, res) => {

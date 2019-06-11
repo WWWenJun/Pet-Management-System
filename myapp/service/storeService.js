@@ -1,5 +1,5 @@
 
-const { addStore,getStore,deleteStore,updateStore,getStoreByPage,selectStore } = require("../dao/storeDao.js");
+const { addStore,getStore,deleteStore,updateStore,getStoreByPage,selectStore ,getStoreFont } = require("../dao/storeDao.js");
 
 module.exports.addStore = async store => {
     await addStore(store);
@@ -8,6 +8,11 @@ module.exports.addStore = async store => {
 module.exports.getStore = async userId => {//获取
     return await getStore(userId);
 }
+
+module.exports.getStoreFont = async store => {//前台根据位置获取门店
+    return await getStoreFont(store);
+}
+
 module.exports.deleteStore = async storeId => {
     const result = await deleteStore(storeId);
 }

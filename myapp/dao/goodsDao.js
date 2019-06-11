@@ -16,8 +16,12 @@ module.exports.getGoods = async (page) => {
         .skip(page.pageSize * (page.currentPage - 1))
         .limit(page.pageSize - 0);
     return { totalCount, totalPage, goodsData, currentPage: page.currentPage, pageSize: page.pageSize }
-    return await mongoose.model("goodsModel").find();
 }
+
+
+
+
+
 module.exports.deleteGoods = async (data) => {
     console.log(data);
     

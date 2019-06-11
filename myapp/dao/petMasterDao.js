@@ -15,6 +15,16 @@ module.exports.addPetMaster = async petMaster => {
     return await mongoose.model("petMasterModel").create(petMaster);
 }
 
+//查询手机号码是否注册
+module.exports.checkPhone = async phone => {
+    return await mongoose.model("petMasterModel").find(phone);
+}
+
+//查询手机号码是否注册
+module.exports.petMasterLogin = async petMaster => {
+    return await mongoose.model("petMasterModel").find(petMaster);
+}
+
 //查询数据
 module.exports.searchPetMaster=async (page)=>{
     const{type,value}=page;

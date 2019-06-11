@@ -18,8 +18,8 @@ const petMasterRouter = require("./routes/petMaster.js");
 const serviesRouter = require("./routes/servies.js");
 const managersRouter = require("./routes/managers.js");
 const clerksRouter = require("./routes/clerks.js");
-const storeRouter=require("./routes/store");
-
+const storeRouter=require("./routes/store.js");
+const orderRouter=require("./routes/order.js");
 
 require("./dao/database");
 
@@ -61,6 +61,9 @@ app.use('/clerks', clerksRouter);
 app.use('/store', storeRouter);
 app.use('/supplier',supplierRouter);
 app.use('/petMaster',petMasterRouter);
+app.use('/order',orderRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
